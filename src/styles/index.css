@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+    .benefit-icon {
+        @apply text-[2rem] min-w-[2rem] aspect-square;
+    }
+    .benefits-con {
+        @apply grid gap-6;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .input-checkbox {
+        @apply appearance-none w-5 h-5 border border-lightAccent rounded-sm relative;
+    }
+    .input-checkbox:checked {
+        @apply bg-[#98ff78];
+    }
+    .input-checkbox:checked::before {
+        @apply content-["\2713"] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xl text-black;
+    }
+}
