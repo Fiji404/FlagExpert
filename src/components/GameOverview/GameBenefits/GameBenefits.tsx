@@ -33,9 +33,9 @@ const FLAGGY_BENEFITS = [
 export const GameBenefits = () => {
     return (
         <>
-            <article className="mt-10 benefits-con max-w-[95%] mx-auto">
-                {FLAGGY_BENEFITS.map((benefitDetails, i) => (
-                    <GameBenefit {...benefitDetails} animationDelay={i + 1} />
+            <article className="mt-12 benefits-con max-w-[95%] mx-auto">
+                {FLAGGY_BENEFITS.map(benefitDetails => (
+                    <GameBenefit key={benefitDetails.benefitName} {...benefitDetails} />
                 ))}
             </article>
         </>
