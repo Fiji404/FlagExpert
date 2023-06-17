@@ -5,10 +5,11 @@ import { Nav } from './components/Nav/Nav';
 
 export const App = () => {
     const isWelcomeScreenIgnored = useAppSelector(state => state.starterScreen.isWelcomeScreenIgnored);
+    const isWelcomeScreenSkipped = useAppSelector(state => state.starterScreen.isSkippedToGameScreen);
     return (
         <>
             <Nav />
-            {isWelcomeScreenIgnored ? <WelcomeGamePicker /> : <GameOverview />}
+            {isWelcomeScreenSkipped || isWelcomeScreenIgnored === 'true' ? <WelcomeGamePicker /> : <GameOverview />}
         </>
     );
 };

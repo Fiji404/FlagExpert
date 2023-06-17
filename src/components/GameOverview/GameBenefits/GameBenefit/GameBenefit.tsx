@@ -12,7 +12,7 @@ export const GameBenefit = ({ benefitName, benefitDesc, benefitIcon }: Props) =>
             initial={{ opacity: 0, pointerEvents: 'none' }}
             animate={{ opacity: 1, pointerEvents: 'auto' }}
             transition={{ delay: 1.3 }}
-            className="grow w-full py-6 px-4 border border-[#2b2b2b] bg-[rgb(24,24,24)] rounded-md"
+            className="grow w-full py-6 px-4 border border-[#2b2b2b] bg-[rgb(24,24,24)] rounded-md hover:shadow-xl shadow-black"
         >
             <h2 className="flex justify-center items-center gap-3 text-center text-[2.2rem] font-semibold text-white">
                 {benefitName} {benefitIcon}

@@ -1,22 +1,27 @@
 import { MdOutlineArrowForwardIos } from 'react-icons/md';
 import { motion } from 'framer-motion';
 import { useRef, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { setScreenIgnorance } from '../../store/slices/starterScreenSlice';
+import {
+    WelcomeScreenIgnoranceOptions,
+    getScreenIgnoranceFromLS,
+    setScreenIgnoranceToLS,
+    toggleSkippedGameScreen
+} from '../../store/slices/starterScreenSlice';
+import { useAppDispatch } from '../../store';
 
-export const GoToAppPanel = () => {
+export const ProcceedToGamePanel = () => {
     const ignoreWelcomeScreenChecbox = useRef<HTMLInputElement>(null);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const proceedToQuizHandler = (e: React.FormEvent) => {
         e.preventDefault();
-        dispatch(setScreenIgnorance(ignoreWelcomeScreenChecbox.current?.checked));
+        const isWelcomeScreenIgnored = String(ignoreWelcomeScreenChecbox.current?.checked);
+        if (isWelcomeScreenIgnored !== 'undefined')
+            dispatch(setScreenIgnoranceToLS(isWelcomeScreenIgnored as WelcomeScreenIgnoranceOptions));
+        dispatch(toggleSkippedGameScreen());
     };
-
     useEffect(() => {
-        const userIgnoredWelcomeScreen = localStorage.getItem('ignoreWelcomeScreen');
-        if (!userIgnoredWelcomeScreen) return;
-        dispatch(setScreenIgnorance(userIgnoredWelcomeScreen));
-    });
+        dispatch(getScreenIgnoranceFromLS());
+    }, [dispatch]);
 
     return (
         <motion.form
@@ -24,7 +29,7 @@ export const GoToAppPanel = () => {
             initial={{ opacity: 0, pointerEvents: 'none' }}
             animate={{ opacity: 1, pointerEvents: 'auto' }}
             transition={{ delay: 2 }}
-            className="mt-12 flex justify-end gap-4 max-w-[95%]"
+            className="mt-16 mb-10 flex justify-end gap-4 max-w-[95%]"
         >
             <label className="flex gap-1 text-sm items-center text-lightAccent">
                 Don't show me this again
