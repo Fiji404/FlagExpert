@@ -1,15 +1,16 @@
-/** @type {import('tailwindcss').Config} */
+import { Config } from 'tailwindcss';
+
 export default {
     content: ['./src/**/*.tsx'],
+    darkMode: 'class',
     theme: {
         extend: {
-            fontFamily: 'Open Sans, sans-serif',
             colors: {
                 primaryDark: '#111',
-                primaryDarkTransparent: '#111',
-                lightAccent: '#747474'
+                primaryLight: '#fff',
+                accentDark: '#747474'
             }
         }
     },
     plugins: []
-};
+} satisfies Config;
