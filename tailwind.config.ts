@@ -8,7 +8,8 @@ export default {
             colors: {
                 primaryDark: '#111',
                 primaryLight: '#fff',
-                accentDark: '#747474'
+                accentDark: '#747474',
+                accentLight: '#d9d9d9'
             }
         }
     },

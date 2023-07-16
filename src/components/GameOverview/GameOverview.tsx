@@ -1,5 +1,5 @@
-import { GameBenefits } from './GameBenefits/GameBenefits';
-import { ProcceedToGamePanel } from '../ProcceedToGamePanel/ProcceedToGamePanel';
+import { Benefits } from './Benefits/Benefits';
+import { ProcceedToGame } from './ProcceedToGame/ProcceedToGame';
 import { WelcomeHeading } from './WelcomeHeading/WelcomeHeading';
 import { GameDescription } from './GameDescription/GameDescription';
 
@@ -7,12 +7,12 @@ export const GameOverview = () => {
     return (
         <>
             <section>
-                <header>
+                <header className='px-2'>
                     <WelcomeHeading />
                     <GameDescription />
                 </header>
-                <GameBenefits />
-                <ProcceedToGamePanel />
+                <Benefits />
+                <ProcceedToGame />
             </section>
         </>
     );

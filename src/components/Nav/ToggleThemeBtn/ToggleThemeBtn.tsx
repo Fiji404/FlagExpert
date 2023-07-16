@@ -8,15 +8,12 @@ export const ToggleThemeBtn = () => {
 
     useEffect(() => {
         localStorage.setItem('theme', theme);
+        if (theme === 'dark') document.body.classList.add('dark');
+        else document.body.classList.remove('dark');
     }, [theme]);
 
     const toggleThemeHandler = () => {
-        setTheme(t => {
-            const oppositeTheme = t === 'dark' ? 'light' : 'dark';
-            if (oppositeTheme === 'dark') document.body.classList.add('dark');
-            else document.body.classList.remove('dark');
-            return oppositeTheme;
-        });
+        setTheme(t => (t === 'dark' ? 'light' : 'dark'));
     };
 
     return (

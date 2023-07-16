@@ -6,13 +6,13 @@ interface Props {
     benefitDesc: string;
 }
 
-export const GameBenefit = ({ benefitName, benefitDesc, benefitIcon }: Props) => {
+export const Benefit = ({ benefitName, benefitDesc, benefitIcon }: Props) => {
     return (
         <motion.section
             initial={{ opacity: 0, pointerEvents: 'none' }}
             animate={{ opacity: 1, pointerEvents: 'auto' }}
             transition={{ delay: 1.3 }}
-            className="grow w-full py-6 px-4 border dark:border-[#242424] dark:bg-[rgb(19,19,19)] rounded-md transition-colors"
+            className="grow basis-80 py-6 px-4 border bg-[#fff] dark:border-[#242424] dark:bg-[rgb(19,19,19)] rounded-md min-w-[300px]"
         >
             <h2 className="flex justify-center items-center gap-3 text-center text-[2.2rem] font-semibold text-black dark:text-white">
                 {benefitName} {benefitIcon}

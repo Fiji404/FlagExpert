@@ -1,4 +1,4 @@
-import { GameBenefit } from './GameBenefit/GameBenefit';
+import { Benefit } from './Benefit/GameBenefit';
 import { GiBrain } from 'react-icons/gi';
 import { HiFaceSmile } from 'react-icons/hi2';
 import { RiFocus3Line } from 'react-icons/ri';
@@ -14,7 +14,7 @@ const FLAGGY_BENEFITS = [
     },
     {
         benefitName: 'Fun and entertainment',
-        benefitIcon: <HiFaceSmile className="benefit-icon text-[#68e023]" />,
+        benefitIcon: <HiFaceSmile className="benefit-icon text-[#39e023]" />,
         benefitDesc: `Flag-based games are primarily a source of entertainment. 
             They can provide a great deal of joy and excitement, especially when they include various game modes, 
             challenges, and rewards. They can serve as an excellent form of relaxation and leisure while allowing players 
@@ -30,12 +30,12 @@ const FLAGGY_BENEFITS = [
     }
 ];
 
-export const GameBenefits = () => {
+export const Benefits = () => {
     return (
         <>
-            <article className="mt-12 benefits-con max-w-[95%] mx-auto">
+            <article className="mt-12 flex justify-center flex-wrap gap-5 px-4">
                 {FLAGGY_BENEFITS.map(benefitDetails => (
-                    <GameBenefit key={benefitDetails.benefitName} {...benefitDetails} />
+                    <Benefit key={benefitDetails.benefitName} {...benefitDetails} />
                 ))}
             </article>
         </>

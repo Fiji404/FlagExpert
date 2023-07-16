@@ -4,10 +4,9 @@
 
 @layer utilities {
     body {
-        @apply bg-primaryLight transition-colors;
+        @apply bg-primaryLight;
         font-family: 'Inter', sans-serif;
-        
-        background-image: radial-gradient(#e0e0e0 1px, transparent 0), radial-gradient(#e0e0e0 1px, transparent 0);
+        background-image: radial-gradient(#ddd 1px, transparent 0), radial-gradient(#ddd 1px, transparent 0);
         background-position:
             0 0,
             25px 25px;
@@ -21,10 +20,6 @@
     .benefit-icon {
         @apply text-[2rem] min-w-[2rem] aspect-square;
     }
-    .benefits-con {
-        @apply grid gap-6;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
     .input-checkbox {
         @apply appearance-none w-5 h-5 border border-accentDark rounded-sm relative cursor-pointer;
     }
@@ -35,7 +30,7 @@
         @apply content-["\2713"] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xl text-black;
     }
     .theme-icon {
-        @apply text-white text-2xl border border-[#222] p-2 box-content rounded-md;
+        @apply text-white text-2xl border bg-primaryLight dark:bg-primaryDark border-accentLight dark:border-[rgb(58,58,58)] hover:bg-[rgb(236,236,236)] dark:hover:bg-[rgb(43,43,43)] p-2 box-content rounded-md transition-colors;
     }
     .theme-icon.light {
         @apply text-black;

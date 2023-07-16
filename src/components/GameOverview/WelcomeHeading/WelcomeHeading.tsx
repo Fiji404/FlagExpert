@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { AiFillFlag } from 'react-icons/ai';
 
 export const WelcomeHeading = () => {
     return (
@@ -8,7 +7,7 @@ export const WelcomeHeading = () => {
             initial={{ translateY: '-200%' }}
             animate={{ translateY: 0, opacity: 1 }}
         >
-            Welcome to flaggy <AiFillFlag className="text-[#32e02c] text-[3.5rem]" />
+            Welcome to Flaggy 
         </motion.h1>
     );
 };
