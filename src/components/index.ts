@@ -1,3 +1,3 @@
 export { Nav } from './Nav/Nav';
-export { WelcomeGamePicker } from './WelcomeGamePicker/WelcomeGamePicker';
+export { GameDashboard } from './GameDashboard/GameDashboard';
 export { GameOverview } from './GameOverview/GameOverview';

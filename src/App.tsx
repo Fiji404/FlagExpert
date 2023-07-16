@@ -1,13 +1,28 @@
-import { useAppSelector } from './store/index';
-import { Nav, WelcomeGamePicker, GameOverview } from './components';
+import { Nav, GameDashboard, GameOverview } from './components';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { AllFlagsMode } from './pages/AllFlagsMode/AllFlagsMode';
+
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <Nav />,
+        children: [
+            {
+                index: true,
+                element: <GameOverview />
+            },
+            {
+                path: '/game',
+                element: <GameDashboard />
+            },
+            {
+                path: '/game/all-flags',
+                element: <AllFlagsMode />
+            }
+        ]
+    }
+]);
 
 export const App = () => {
-    const isWelcomeScreenIgnored = useAppSelector(state => state.starterScreen.isWelcomeScreenIgnored);
-    const isWelcomeScreenSkipped = useAppSelector(state => state.starterScreen.isSkippedToGameScreen);
-    return (
-        <>
-            <Nav />
-            {isWelcomeScreenSkipped || isWelcomeScreenIgnored === 'true' ? <WelcomeGamePicker /> : <GameOverview />}
-        </>
-    );
+    return <RouterProvider router={router} />;
 };

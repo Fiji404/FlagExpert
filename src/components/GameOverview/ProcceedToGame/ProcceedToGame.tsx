@@ -8,6 +8,7 @@ import {
     toggleSkippedGameScreen
 } from '../../../store/slices/starterScreenSlice';
 import { useAppDispatch } from '../../../store';
+import { Link } from 'react-router-dom';
 
 export const ProcceedToGame = () => {
     const ignoreWelcomeScreenChecbox = useRef<HTMLInputElement>(null);
@@ -33,11 +34,14 @@ export const ProcceedToGame = () => {
         >
             <label className="flex gap-1 text-sm items-center text-accentDark">
                 Don't show me this again
-                <input ref={ignoreWelcomeScreenChecbox} className="input-checkbox" type="checkbox" />
+                <input ref={ignoreWelcomeScreenChecbox} className="input-checkbox " type="checkbox" />
             </label>
-            <button className="flex items-center bg-[#39e023] py-1 px-3 rounded-md text-xl text-[#094207] hover:bg-[#4fff19] transition-colors">
+            <Link
+                to="/game"
+                className="flex items-center dark:bg-[rgb(19,19,19)] bg-[#ffffff] border border-accentLight dark:border-[#242424] py-1 px-3 rounded-md text-xl dark:text-[#fff] text-[#000] hover:bg-[#e7e7e7] dark:hover:bg-[rgb(27,27,27)]"
+            >
                 Next <MdOutlineArrowForwardIos />
-            </button>
+            </Link>
         </motion.form>
     );
 };
