@@ -1,19 +1,17 @@
+import { SupabaseQueryResponse } from '@/types/schema/supabase';
 import { FlagGridItem } from './FlagGridItem/FlagGridItem';
 
-export interface CountryDetails {
-    countryName: string;
-    countryFlag: string;
-}
 
 interface Props {
-    countriesDetails: { countryCodes: CountryDetails[] };
+    countries: SupabaseQueryResponse;
 }
 
-export const FlagsGrid = ({ countriesDetails }: Props) => {
+export const FlagsGrid = ({ countries }: Props) => {
+    // console.log(countries)
     return (
-        <ul>
-            {countriesDetails.map(countryDetails => (
-                <FlagGridItem countryDetails={countryDetails} />
+        <ul className='mt-5 flex flex-wrap gap-5'>
+            {countries?.map(country => (
+                <FlagGridItem key={country.country_name} country={country} />
             ))}
         </ul>
     );

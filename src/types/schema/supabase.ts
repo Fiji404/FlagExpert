@@ -39,3 +39,12 @@ export interface Database {
         };
     };
 }
+
+export interface SupabaseRow {
+    country_continent?: string | null;
+    country_flag_url?: string | null;
+    country_name?: string | null;
+    id?: number;
+}
+
+export type SupabaseQueryResponse = SupabaseRow[] | null;
