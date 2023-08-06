@@ -1,15 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import { App } from './App.tsx';
-import { Provider } from 'react-redux';
-import { store } from './store/index.ts';
+import { createClient } from '@supabase/supabase-js';
+import { DATABASE_URL, SUPABASE_KEY } from './config/supabase/supabase';
+import { Database } from './types/schema/supabase.ts';
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+const root = createRoot(document.getElementById('root')!);
 
 root.render(
     <React.StrictMode>
-        <Provider store={store}>
-            <App />
-        </Provider>
+        <App />
     </React.StrictMode>
 );
+
+export const supabase = createClient<Database>(DATABASE_URL, SUPABASE_KEY);

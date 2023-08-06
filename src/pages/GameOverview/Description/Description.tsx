@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 
-export const GameDescription = () => {
+export const Description = () => {
     return (
         <motion.p
             initial={{ opacity: 0, scale: 1.1 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.1 }}
             className="mx-auto text-center mt-8 text-xl max-w-[1020px] text-accentDark"
         >
             Flaggy enables users to guess flags by their images. By recognizing shapes, colors, and symbols on the

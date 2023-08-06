@@ -17,7 +17,7 @@ export const ToggleThemeBtn = () => {
     };
 
     return (
-        <button onClick={toggleThemeHandler} aria-label="Theme toggle button">
+        <button onClick={toggleThemeHandler} aria-label="Toggle theme button">
             {iconType}
         </button>
     );

@@ -1,27 +1,19 @@
-import { Nav, GameDashboard, GameOverview } from './components';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { AllFlagsMode } from './pages/AllFlagsMode/AllFlagsMode';
+import { Layout } from './components/UI/Layout/Layout';
+import { GameOverview, GameDashboard, PickedGame, pickedGameLoader } from './pages';
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import { procceedToGameAction } from './pages/GameOverview/ProcceedToGame/ProcceedToGame';
 
-const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <Nav />,
-        children: [
-            {
-                index: true,
-                element: <GameOverview />
-            },
-            {
-                path: '/game',
-                element: <GameDashboard />
-            },
-            {
-                path: '/game/all-flags',
-                element: <AllFlagsMode />
-            }
-        ]
-    }
-]);
+const router = createBrowserRouter(
+    createRoutesFromElements(
+        <>
+            <Route path="/" element={<Layout />}>
+                <Route index element={<GameOverview />} action={procceedToGameAction} />
+                <Route path="/game" element={<GameDashboard />} />
+                <Route path="/game/:game" element={<PickedGame />} loader={pickedGameLoader} />
+            </Route>
+        </>
+    )
+);
 
 export const App = () => {
     return <RouterProvider router={router} />;
