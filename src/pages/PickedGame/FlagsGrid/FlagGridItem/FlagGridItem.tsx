@@ -6,8 +6,8 @@ interface Props {
 
 export const FlagGridItem = ({ country }: Props) => {
     return (
-        <li className='bg-[#222] basis-20'>
-            <img className='max-w-full ' src={country.country_flag_url!} alt={country.country_name!} />
+        <li className="bg-[#222] grow max-w-[120px] box-content p-5 rounded-md aspect-video">
+            <img className="w-full h-full" src={country.country_flag_url!} alt={country.country_name!} />
         </li>
     );
 };

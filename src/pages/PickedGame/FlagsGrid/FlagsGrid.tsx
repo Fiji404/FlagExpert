@@ -9,9 +9,9 @@ interface Props {
 export const FlagsGrid = ({ countries }: Props) => {
     // console.log(countries)
     return (
-        <ul className='mt-5 flex flex-wrap gap-5'>
+        <ul className='mt-5 flex px-3 justify-center flex-wrap gap-5'>
             {countries?.map(country => (
-                <FlagGridItem key={country.country_name} country={country} />
+                <FlagGridItem key={country.id} country={country} />
             ))}
         </ul>
     );
