@@ -1,4 +1,4 @@
-import { Benefit } from './Benefit/Benefit';
+import { Benefit } from './GameBenefit';
 import { GiBrain } from 'react-icons/gi';
 import { HiFaceSmile } from 'react-icons/hi2';
 import { RiFocus3Line } from 'react-icons/ri';
@@ -30,7 +30,7 @@ const FLAGGY_BENEFITS = [
     }
 ];
 
-export const Benefits = () => {
+export const GameBenefits = () => {
     return (
         <>
             <article className="mt-12 flex justify-center flex-wrap gap-5 px-4">

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-export const Description = () => {
+export const GameDescription = () => {
     return (
         <motion.p
             initial={{ opacity: 0, scale: 1.1 }}

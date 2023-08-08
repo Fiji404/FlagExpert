@@ -1,6 +1,6 @@
 export interface SupabaseRow {
-    country_flag_url: string;
-    country_name: string;
+    countryFlagURL: string;
+    countryName: string;
     id: number;
 }
 

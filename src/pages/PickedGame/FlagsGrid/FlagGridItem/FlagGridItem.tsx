@@ -1,8 +1,8 @@
-import { SupabaseRow } from '@/types/schema/supabase';
+import { SupabaseRow } from '@/types/supabase';
 
 interface Props {
-    countryName: SupabaseRow['country_name'];
-    countryFlagUrl: SupabaseRow['country_flag_url'];
+    countryName: SupabaseRow['countryName'];
+    countryFlagUrl: SupabaseRow['countryFlagURL'];
 }
 
 export const FlagGridItem = ({ countryName, countryFlagUrl }: Props) => {

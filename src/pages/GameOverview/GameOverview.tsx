@@ -1,30 +1,31 @@
-import { redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useUserRedirection } from '../../store';
-import { Benefits, ProcceedToGame, WelcomeHeading, Description } from './';
+import { GameBenefits, ProcceedToGame, WelcomeHeading, GameDescription } from './';
+import { useDefaultAppRouteStore } from '@/store/defaultAppRouteStore/defaultAppRouteStore';
 
 export const GameOverview = () => {
-    const data = useUserRedirection(state => state.isUserRedirectedToGameDashboard);
+    const { defaultAppRoute, isDefaultRouteActive, getDefaultAppRoute } = useDefaultAppRouteStore(
+        ({ defaultAppRoute, isDefaultRouteActive, getDefaultAppRoute }) => ({
+            defaultAppRoute,
+            isDefaultRouteActive,
+            getDefaultAppRoute
+        })
+    );
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const isGameOverviewScreenIgnored = localStorage.getItem('ignoreOverviewScreen');
-        if (isGameOverviewScreenIgnored) redirect('/game');
-    }, []);
+        getDefaultAppRoute();
+        if (defaultAppRoute === 'GameDashboard' && isDefaultRouteActive) navigate('/game');
+    }, [defaultAppRoute, isDefaultRouteActive, getDefaultAppRoute, navigate]);
 
     return (
         <section>
             <header className="px-2">
                 <WelcomeHeading />
-                <Description />
+                <GameDescription />
             </header>
-            <Benefits />
+            <GameBenefits />
             <ProcceedToGame />
         </section>
     );
 };
-
-// export const gameOverviewIgnoranceLoader = () => {
-//     const isGameOverviewIgnored = localStorage.getItem('ignoreOverviewScreen');
-//     if (!isGameOverviewIgnored) return null;
-//     return redirect('/game');
-// };

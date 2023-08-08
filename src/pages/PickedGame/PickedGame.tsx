@@ -1,14 +1,14 @@
 import { FlagsGrid } from './FlagsGrid/FlagsGrid';
 import { SearchFlagInput } from '../../components';
-import { useSupabaseDBStore } from '@/store/supabaseDBStore/supabaseCStore';
+import { useSupabaseCountriesStore } from '@/store/supabaseCountriesStore/supabaseCountriesStore';
 import { useEffect } from 'react';
 
 export const PickedGame = () => {
-    const { countries, queryDataFromDB } = useSupabaseDBStore();
+    const { countries, queryCountriesData } = useSupabaseCountriesStore();
 
     useEffect(() => {
-        queryDataFromDB('id, country_name, country_flag_url');
-    }, [queryDataFromDB]);
+        queryCountriesData('id, countryName, countryFlagURL');
+    }, [queryCountriesData]);
 
     return (
         <>
