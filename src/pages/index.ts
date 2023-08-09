@@ -1,3 +1,3 @@
 export { PickedGame } from './PickedGame/PickedGame';
-export { GameOverview } from './GameOverview/GameOverview';
+export { Overview } from './Overview/Overview';
 export { GameDashboard } from './GameDashboard/GameDashboard';

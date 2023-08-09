@@ -1,9 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { GameBenefits, ProcceedToGame, WelcomeHeading, GameDescription } from './';
+import { Intro, Benefits, NavigateToGame } from '.';
 import { useDefaultAppRouteStore } from '@/store/defaultAppRouteStore/defaultAppRouteStore';
 
-export const GameOverview = () => {
+export const Overview = () => {
+    const navigate = useNavigate();
     const { defaultAppRoute, isDefaultRouteActive, getDefaultAppRoute } = useDefaultAppRouteStore(
         ({ defaultAppRoute, isDefaultRouteActive, getDefaultAppRoute }) => ({
             defaultAppRoute,
@@ -11,7 +12,6 @@ export const GameOverview = () => {
             getDefaultAppRoute
         })
     );
-    const navigate = useNavigate();
 
     useEffect(() => {
         getDefaultAppRoute();
@@ -20,12 +20,9 @@ export const GameOverview = () => {
 
     return (
         <section>
-            <header className="px-2">
-                <WelcomeHeading />
-                <GameDescription />
-            </header>
-            <GameBenefits />
-            <ProcceedToGame />
+            <Intro />
+            <Benefits />
+            <NavigateToGame />
         </section>
     );
 };

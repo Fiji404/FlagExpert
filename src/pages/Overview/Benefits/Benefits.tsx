@@ -1,9 +1,9 @@
-import { Benefit } from './GameBenefit';
+import { Benefit } from './Benefit';
 import { GiBrain } from 'react-icons/gi';
 import { HiFaceSmile } from 'react-icons/hi2';
 import { RiFocus3Line } from 'react-icons/ri';
 
-const FLAGGY_BENEFITS = [
+const BENEFITS = [
     {
         name: 'Education',
         icon: <GiBrain className="benefit-icon text-[#fd88b5]" />,
@@ -30,11 +30,11 @@ const FLAGGY_BENEFITS = [
     }
 ];
 
-export const GameBenefits = () => {
+export const Benefits = () => {
     return (
         <>
             <article className="mt-12 flex justify-center flex-wrap gap-5 px-4">
-                {FLAGGY_BENEFITS.map(benefit => (
+                {BENEFITS.map(benefit => (
                     <Benefit key={benefit.name} {...benefit} />
                 ))}
             </article>

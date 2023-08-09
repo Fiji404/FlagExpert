@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import { MdOutlineArrowForwardIos } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 
-export const ProcceedToGame = () => {
+export const NavigateToGame = () => {
     const { defaultAppRoute, getDefaultAppRoute, setDefaultAppRouteToLS } = useDefaultAppRouteStore(
         ({ defaultAppRoute, getDefaultAppRoute, setDefaultAppRouteToLS }) => ({
             defaultAppRoute,
