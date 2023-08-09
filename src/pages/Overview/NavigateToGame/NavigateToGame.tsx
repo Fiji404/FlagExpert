@@ -20,10 +20,10 @@ export const NavigateToGame = () => {
         const isGameOverviewSkipped = skipGameOverviewInputRef.current?.checked;
         if (!isGameOverviewSkipped) {
             setDefaultAppRouteToLS(null);
-            return navigate('/game');
+            return navigate('/dashboard');
         }
         setDefaultAppRouteToLS(isGameOverviewSkipped && 'GameDashboard');
-        navigate('/game');
+        navigate('/dashboard');
     };
 
     useEffect(() => {
