@@ -10,6 +10,11 @@ export default {
                 primaryLight: '#fff',
                 accentDark: '#747474',
                 accentLight: '#d9d9d9'
+            },
+            keyframes: {
+                originate: {
+                    '100%': { opacity: '1' }
+                }
             }
         }
     },

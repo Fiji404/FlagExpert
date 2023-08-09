@@ -10,16 +10,11 @@ export const Intro = () => {
             >
                 Welcome to Flaggy
             </motion.h1>
-            <motion.p
-                initial={{ opacity: 0, scale: 1.1 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.1 }}
-                className="mx-auto text-center mt-8 text-xl max-w-[1020px] text-accentDark"
-            >
+            <p className="mx-auto text-center mt-8 text-xl max-w-[1020px] text-accentDark opacity-0 animate-[originate_500ms_300ms_forwards]">
                 Flaggy enables users to guess flags by their images. By recognizing shapes, colors, and symbols on the
                 flags, users can identify the corresponding countries. The app offers varying levels of difficulty and
                 features to enhance the overall flag-guessing experience.
-            </motion.p>
+            </p>
         </header>
     );
 };
