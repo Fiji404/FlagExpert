@@ -3,7 +3,7 @@ import { SearchFlagInput } from '@/components';
 import { useSupabaseCountriesStore } from '@/store/supabaseCountriesStore/supabaseCountriesStore';
 import { useEffect } from 'react';
 
-export const PickedGame = () => {
+export const Game = () => {
     const { countries, queryCountriesData } = useSupabaseCountriesStore();
 
     useEffect(() => {

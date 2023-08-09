@@ -22,7 +22,7 @@ export const NavigateToGame = () => {
             setDefaultAppRouteToLS(null);
             return navigate('/dashboard');
         }
-        setDefaultAppRouteToLS(isGameOverviewSkipped && 'GameDashboard');
+        setDefaultAppRouteToLS(isGameOverviewSkipped && '/dashboard');
         navigate('/dashboard');
     };
 
@@ -39,7 +39,7 @@ export const NavigateToGame = () => {
                 Don't show me this again
                 <input
                     ref={skipGameOverviewInputRef}
-                    defaultChecked={defaultAppRoute === 'GameDashboard'}
+                    defaultChecked={defaultAppRoute === '/dashboard'}
                     name="skip-game-overview"
                     className="input-checkbox"
                     type="checkbox"

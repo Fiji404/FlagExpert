@@ -5,18 +5,18 @@ import { useDefaultAppRouteStore } from '@/store/defaultAppRouteStore/defaultApp
 
 export const Overview = () => {
     const navigate = useNavigate();
-    const { defaultAppRoute, isDefaultRouteActive, getDefaultAppRoute } = useDefaultAppRouteStore(
-        ({ defaultAppRoute, isDefaultRouteActive, getDefaultAppRoute }) => ({
+    const { defaultAppRoute, isDefaultAppRouteActive, getDefaultAppRoute } = useDefaultAppRouteStore(
+        ({ defaultAppRoute, isDefaultAppRouteActive, getDefaultAppRoute }) => ({
             defaultAppRoute,
-            isDefaultRouteActive,
+            isDefaultAppRouteActive,
             getDefaultAppRoute
         })
     );
 
     useEffect(() => {
         getDefaultAppRoute();
-        if (defaultAppRoute === 'GameDashboard' && isDefaultRouteActive) navigate('/game');
-    }, [defaultAppRoute, isDefaultRouteActive, getDefaultAppRoute, navigate]);
+        if (defaultAppRoute !== null && isDefaultAppRouteActive) navigate(defaultAppRoute);
+    }, [defaultAppRoute, isDefaultAppRouteActive, getDefaultAppRoute, navigate]);
 
     return (
         <section>

@@ -1,26 +1,26 @@
 import { getLocalStorageValue } from '@/utils';
 import { create } from 'zustand';
 
-type DefaultRouteVariants = 'GameDashboard' | null;
+type DefaultRoute = '/dashboard' | null;
 
 interface DefaultRouteStore {
-    defaultAppRoute: DefaultRouteVariants;
-    isDefaultRouteActive: boolean;
+    defaultAppRoute: DefaultRoute;
+    isDefaultAppRouteActive: boolean;
     getDefaultAppRoute(): void;
-    setDefaultAppRouteToLS(defaultRoute: DefaultRouteVariants): void;
+    setDefaultAppRouteToLS(defaultRoute: DefaultRoute): void;
 }
 
 export const useDefaultAppRouteStore = create<DefaultRouteStore>(set => ({
     defaultAppRoute: null,
-    isDefaultRouteActive: true,
+    isDefaultAppRouteActive: true,
     getDefaultAppRoute() {
-        const defaultAppRouteLS = getLocalStorageValue('defaultAppRoute') as DefaultRouteVariants;
+        const defaultAppRouteLS = getLocalStorageValue('defaultAppRoute') as DefaultRoute;
         if (!defaultAppRouteLS) return;
         set({ defaultAppRoute: defaultAppRouteLS });
-        setTimeout(() => set({ isDefaultRouteActive: false }));
+        setTimeout(() => set({ isDefaultAppRouteActive: false }));
     },
-    setDefaultAppRouteToLS(defaultRoute: DefaultRouteVariants) {
-        if (defaultRoute === 'GameDashboard') {
+    setDefaultAppRouteToLS(defaultRoute: DefaultRoute) {
+        if (defaultRoute === '/dashboard') {
             localStorage.setItem('defaultAppRoute', defaultRoute);
         }
         if (defaultRoute === null) {

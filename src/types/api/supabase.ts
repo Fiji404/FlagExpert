@@ -5,4 +5,4 @@ export interface SupabaseRow {
 }
 
 export type SupabaseQueryResponse = SupabaseRow[];
-export type QueryVariants = '*' | 'id, countryName' | 'id, countryFlagURL' | 'id, countryName, countryFlagURL';
+export type Query = '*' | 'id, countryName' | 'id, countryFlagURL' | 'id, countryName, countryFlagURL';
