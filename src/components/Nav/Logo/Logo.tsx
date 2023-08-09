@@ -14,13 +14,15 @@ export const Logo = () => {
     }, [isLogoClicked]);
 
     return (
-        <Link
-            onClick={logoClickHandler}
-            className="group flex items-center gap-1 text-[1.6rem] dark:text-white font-extrabold hover:text-[#727272] dark:hover:brightness-75 transition-all"
-            to="/"
-        >
-            Flaggy{' '}
-            <AiFillFlag className="text-[#32e02c] group-hover:text-[#727272] group-hover:brightness-75 transition-colors" />
-        </Link>
+        <h1>
+            <Link
+                onClick={logoClickHandler}
+                className="group flex items-center gap-1 text-[1.6rem] dark:text-white font-extrabold hover:text-[#727272] dark:hover:brightness-75 transition-all"
+                to="/"
+            >
+                Flaggy
+                <AiFillFlag className="text-[#32e02c] group-hover:text-[#727272] group-hover:brightness-75 transition-colors" />
+            </Link>
+        </h1>
     );
 };
