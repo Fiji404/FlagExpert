@@ -10,6 +10,7 @@ export const Game = () => {
     );
 
     const countryGuessHandler = (countryName: string) => {
+        let isGuessed = false;
         setGuessedCountries(prevGuessedCountries => {
             const guessedCountryIdx = prevGuessedCountries.findIndex(country => country.countryName === countryName);
             if (guessedCountryIdx === -1) return prevGuessedCountries;
@@ -18,8 +19,10 @@ export const Game = () => {
                 ...prevGuessedCountries[guessedCountryIdx],
                 isGuessed: true
             };
+            isGuessed = true;
             return guessedCountriesCopy;
         });
+        return isGuessed;
     };
 
     useEffect(() => {

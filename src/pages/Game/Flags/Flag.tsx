@@ -1,4 +1,5 @@
 import { SupabaseRow } from '@/types/api/supabase';
+import React from 'react';
 
 interface Props {
     countryName: SupabaseRow['countryName'];
@@ -6,7 +7,7 @@ interface Props {
     isGuessed: boolean;
 }
 
-export const Flag = ({ countryName, countryFlagURL, isGuessed }: Props) => {
+export const Flag = React.memo(({ countryName, countryFlagURL, isGuessed }: Props) => {
     return (
         <li
             className={`bg-[#161616] border border-[#222222] grow max-w-[100px] box-content px-3 py-2 rounded-md aspect-video ${
@@ -17,4 +18,4 @@ export const Flag = ({ countryName, countryFlagURL, isGuessed }: Props) => {
             {isGuessed && <p className="mt-2 dark:text-white text-center font-bold">{countryName}</p>}
         </li>
     );
-};
+});
