@@ -1,5 +1,7 @@
 import { SupabaseRow } from '@/types/api/supabase';
-import React from 'react';
+import { memo, useState } from 'react';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 interface Props {
     countryName: SupabaseRow['countryName'];
@@ -7,15 +9,31 @@ interface Props {
     isGuessed: boolean;
 }
 
-export const Flag = React.memo(({ countryName, countryFlagURL, isGuessed }: Props) => {
+export const Flag = memo(({ countryName, countryFlagURL, isGuessed }: Props) => {
+    const [isLoading, setIsLoading] = useState(true);
+
+    const loadedCountryImageHandler = () => {
+        setIsLoading(false);
+    };
+
     return (
-        <li
-            className={`bg-[#161616] border border-[#222222] grow max-w-[100px] box-content px-3 py-2 rounded-md aspect-video ${
-                isGuessed ? 'animate-[flip_1s]' : ''
-            }`}
-        >
-            <img className="w-full h-full" src={countryFlagURL} alt={countryName} />
-            {isGuessed && <p className="mt-2 dark:text-white text-center font-bold">{countryName}</p>}
-        </li>
+        <>
+            {isLoading && (
+                <Skeleton count={1} baseColor="#161616" highlightColor="#222" className="min-w-[100px] min-h-[80px]" />
+            )}
+            <li
+                className={`bg-[#161616] border border-[#222222] grow min-w-[100px] max-w-[120px] box-content px-3 py-2 rounded-md aspect-video ${
+                    isGuessed ? 'animate-[flip_1s]' : ''
+                } ${isLoading && 'hidden'}`}
+            >
+                <img
+                    onLoad={loadedCountryImageHandler}
+                    className="w-full h-full"
+                    src={countryFlagURL}
+                    alt={countryName}
+                />
+                {isGuessed && <p className="mt-2 dark:text-white text-center font-bold">{countryName}</p>}
+            </li>
+        </>
     );
 });
