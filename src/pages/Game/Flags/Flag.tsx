@@ -18,11 +18,9 @@ export const Flag = memo(({ countryName, countryFlagURL, isGuessed }: Props) => 
 
     return (
         <>
-            {isLoading && (
-                <Skeleton count={1} baseColor="#161616" highlightColor="#222" className="min-w-[100px] min-h-[80px]" />
-            )}
+            {isLoading && <Skeleton count={1} className="min-w-[100px] min-h-[80px]" />}
             <li
-                className={`bg-[#161616] border border-[#222222] grow min-w-[100px] max-w-[120px] box-content px-3 py-2 rounded-md aspect-video ${
+                className={`bg-[#f8f8f8] dark:bg-[#161616] border border-[#e0e0e0] dark:border-[#222222] grow min-w-[100px] max-w-[120px] box-content px-3 py-2 rounded-md aspect-video ${
                     isGuessed ? 'animate-[flip_1s]' : ''
                 } ${isLoading && 'hidden'}`}
             >
@@ -32,7 +30,7 @@ export const Flag = memo(({ countryName, countryFlagURL, isGuessed }: Props) => 
                     src={countryFlagURL}
                     alt={countryName}
                 />
-                {isGuessed && <p className="mt-2 dark:text-white text-center font-bold">{countryName}</p>}
+                {isGuessed && <p className="mt-2 dark:text-white text-black text-center ">{countryName}</p>}
             </li>
         </>
     );
