@@ -1,14 +1,13 @@
 import { Flags } from './Flags/Flags';
 import { SearchInput } from '@/components';
 import { useSupabaseCountriesStore } from '@/store/supabaseCountriesStore/supabaseCountriesStore';
+import { SupabaseRow } from '@/types/api/supabase';
 import { useEffect, useState } from 'react';
 
 export const Game = () => {
     const { countries, queryCountriesData } = useSupabaseCountriesStore();
-    const [guessedCountries, setGuessedCountries] = useState(() =>
-        structuredClone(countries).map(country => ({ ...country, isGuessed: false }))
-    );
-
+    const [guessedCountries, setGuessedCountries] = useState<(SupabaseRow & { isGuessed: boolean })[]>([]);
+    console.log(countries);
     const countryGuessHandler = (countryName: string) => {
         let isGuessed = false;
         setGuessedCountries(prevGuessedCountries => {
@@ -28,6 +27,10 @@ export const Game = () => {
     useEffect(() => {
         queryCountriesData('id, countryName, countryFlagURL');
     }, [queryCountriesData]);
+    
+    useEffect(() => {
+        setGuessedCountries(structuredClone(countries).map(country => ({ ...country, isGuessed: false })));
+    }, [countries]);
 
     return (
         <>
