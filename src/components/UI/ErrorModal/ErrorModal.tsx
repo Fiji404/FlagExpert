@@ -3,13 +3,13 @@ import { BiErrorAlt } from 'react-icons/bi';
 
 interface Props {
     errorText: string;
-    onClick(): void;
+    closeModalHandler(): void;
 }
 
-export const ErrorModal = ({ errorText, onClick }: Props) => {
+export const ErrorModal = ({ errorText, closeModalHandler }: Props) => {
     return (
         <motion.div
-            onClick={onClick}
+            onClick={closeModalHandler}
             initial={{ opacity: 0, scale: 0.96, translateX: '-50%', translateY: '-2rem' }}
             animate={{ opacity: 1, scale: 1, translateX: '-50%', translateY: 0 }}
             exit={{ opacity: 0, scale: 0 }}

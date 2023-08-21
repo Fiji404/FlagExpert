@@ -1,19 +1,28 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { BiSearch } from 'react-icons/bi';
 
 interface Props {
-    countryGuessHandler(countryName: string): boolean;
+    validateCountryFlagName(countryName: string): void;
+    isCountryGuessed: boolean;
 }
 
-export const SearchInput = ({ countryGuessHandler }: Props) => {
-    const inputSearchRef = useRef<HTMLInputElement>(null)
+export const SearchInput = ({ validateCountryFlagName, isCountryGuessed }: Props) => {
+    const inputSearchRef = useRef<HTMLInputElement>(null);
+
+    const clearInputValue = () => {
+        if (!inputSearchRef.current) return;
+        inputSearchRef.current.value = '';
+    };
 
     const inputChangeHandler = () => {
         const inputValue = inputSearchRef.current?.value;
         if (!inputValue) return;
-        const isGuessed = countryGuessHandler(inputValue);
-        if (isGuessed) inputSearchRef.current.value = ''
+        validateCountryFlagName(inputValue);
     };
+
+    useEffect(() => {
+        if (isCountryGuessed) clearInputValue();
+    }, [isCountryGuessed]);
 
     return (
         <div className="mx-3 mt-3 flex items-center dark:bg-[#111] bg-[#fff] gap-2 rounded-md pl-2 border dark:border-[#222] border-[#dfdfdf] dark:focus-within:border-[#464646] focus-within:border-[#b3b3b3]  transition-colors">

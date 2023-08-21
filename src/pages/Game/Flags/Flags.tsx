@@ -1,8 +1,8 @@
-import { SupabaseRow } from '@/types/api/supabase';
 import { Flag } from './Flag';
+import { GuessedCountries } from '../Game';
 
 interface Props {
-    countries: (SupabaseRow & { isGuessed: boolean })[];
+    countries: GuessedCountries[];
 }
 
 export const Flags = ({ countries }: Props) => {
@@ -13,7 +13,7 @@ export const Flags = ({ countries }: Props) => {
                     key={country.id}
                     countryName={country.countryName}
                     countryFlagURL={country.countryFlagURL}
-                    isGuessed={country.isGuessed}
+                    isCountryGuessed={country.isCountryGuessed}
                 />
             ))}
         </ul>
