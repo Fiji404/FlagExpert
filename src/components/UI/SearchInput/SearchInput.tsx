@@ -1,3 +1,4 @@
+import { debounce } from '@/utils/debounce/debounce';
 import { useEffect, useRef } from 'react';
 import { BiSearch } from 'react-icons/bi';
 
@@ -29,7 +30,7 @@ export const SearchInput = ({ validateCountryFlagName, isCountryGuessed }: Props
             <BiSearch className="dark:text-white text-black text-xl" />
             <input
                 ref={inputSearchRef}
-                onChange={inputChangeHandler}
+                onChange={debounce(inputChangeHandler, 250)}
                 className="min-h-[40px] grow bg-inherit outline-none dark:text-white text-black"
                 placeholder="Type your flag here"
                 type="text"
