@@ -16,7 +16,7 @@ export default {
                     '100%': { opacity: '1' }
                 },
                 flip: {
-                    '50%': { translate: '0 -10px', rotate: 'y 180deg' }
+                    '50%': { translate: '0 -10px', rotate: 'y 180deg', backgroundColor: '#233a21' }
                 }
             }
         }

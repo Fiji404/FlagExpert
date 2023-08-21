@@ -1,13 +1,15 @@
+import { ErrorModal } from '@/components/UI/ErrorModal/ErrorModal';
 import { Flags } from './Flags/Flags';
 import { SearchInput } from '@/components';
 import { useSupabaseCountriesStore } from '@/store/supabaseCountriesStore/supabaseCountriesStore';
 import { SupabaseRow } from '@/types/api/supabase';
 import { useEffect, useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 
 export const Game = () => {
-    const { countries, queryCountriesData } = useSupabaseCountriesStore();
+    const { countries, queryCountriesData, error, removeError } = useSupabaseCountriesStore();
     const [guessedCountries, setGuessedCountries] = useState<(SupabaseRow & { isGuessed: boolean })[]>([]);
-    console.log(countries);
+
     const countryGuessHandler = (countryName: string) => {
         let isGuessed = false;
         setGuessedCountries(prevGuessedCountries => {
@@ -24,18 +26,23 @@ export const Game = () => {
         return isGuessed;
     };
 
+    const removeErrorModalHandler = () => {
+        removeError();
+    };
+
     useEffect(() => {
         queryCountriesData('id, countryName, countryFlagURL');
     }, [queryCountriesData]);
-    
+
     useEffect(() => {
         setGuessedCountries(structuredClone(countries).map(country => ({ ...country, isGuessed: false })));
     }, [countries]);
 
     return (
-        <>
-            <SearchInput countryGuessHandler={countryGuessHandler} />
-            <Flags countries={guessedCountries} />
-        </>
+        <AnimatePresence>
+            {error && <ErrorModal key="error-modal" onClick={removeErrorModalHandler} errorText={error.message} />}
+            <SearchInput key="input" countryGuessHandler={countryGuessHandler} />
+            <Flags key="flags" countries={guessedCountries} />
+        </AnimatePresence>
     );
 };

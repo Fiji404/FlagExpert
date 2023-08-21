@@ -7,6 +7,7 @@ interface SupabaseCountriesStore {
     countries: SupabaseQueryResponse;
     isDataLoading: boolean;
     error: PostgrestError | null;
+    removeError(): void;
     queryCountriesData(query: Query): Promise<void>;
 }
 
@@ -14,6 +15,9 @@ export const useSupabaseCountriesStore = create<SupabaseCountriesStore>(set => (
     countries: [],
     isDataLoading: false,
     error: null,
+    removeError() {
+        return set({ error: null });
+    },
     queryCountriesData: async (query: Query) => {
         set({ isDataLoading: true });
         const { error, data: countriesData } = await supabase
