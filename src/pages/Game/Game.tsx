@@ -1,4 +1,4 @@
-import { SearchInput, ErrorModal } from '@/components';
+import { SearchInput, ErrorModal, LoadingSpinner } from '@/components';
 import { Flags } from './Flags/Flags';
 import { useSupabaseCountriesStore } from '@/store/supabaseCountriesStore/supabaseCountriesStore';
 import { SupabaseRow } from '@/types/api/supabase';
@@ -45,7 +45,7 @@ export const Game = () => {
                 {error && <ErrorModal key="error-modal" closeModalHandler={clearError} errorText={error.message} />}
             </AnimatePresence>
             <SearchInput isCountryGuessed={isCountryGuessed} validateCountryFlagName={validateCountryFlagName} />
-            <Flags countries={guessedCountries} />
+            {isDataLoading ? <LoadingSpinner /> : <Flags countries={guessedCountries} />}
         </>
     );
 };
