@@ -10,13 +10,22 @@
     html {
         scroll-behavior: smooth;
     }
+    body::-webkit-scrollbar {
+        width: calc(0.5vw + 0.2rem);
+    }
+    body::-webkit-scrollbar-thumb {
+        @apply bg-[#b1b1b1] dark:bg-[#f00] rounded-full;
+    }
+    body.dark::-webkit-scrollbar-thumb {
+        @apply bg-[#303030];
+    }
     body {
         @apply bg-primaryLight;
         font-family: 'Inter', sans-serif;
         background-image: radial-gradient(#ddd 1px, transparent 0), radial-gradient(#ddd 1px, transparent 0);
         background-position:
-        0 0,
-        25px 25px;
+            0 0,
+            25px 25px;
         background-size: 50px 50px;
     }
     body.dark {
