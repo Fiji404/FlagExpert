@@ -17,8 +17,11 @@ export const Game = () => {
     const validateCountryFlagName = (countryName: string) => {
         setIsCountryGuessed(false);
         setGuessedCountries(prevGuessedCountries => {
-            const guessedCountryIdx = prevGuessedCountries.findIndex(country => country.countryName === countryName);
-            if (guessedCountryIdx === -1) return prevGuessedCountries;
+            const guessedCountryIdx = prevGuessedCountries.findIndex(
+                country => country.countryName.toLowerCase() === countryName
+            );
+            if (guessedCountryIdx === -1 || prevGuessedCountries[guessedCountryIdx].isCountryGuessed)
+                return prevGuessedCountries;
             const guessedCountriesCopy = [...prevGuessedCountries];
             guessedCountriesCopy[guessedCountryIdx] = {
                 ...prevGuessedCountries[guessedCountryIdx],

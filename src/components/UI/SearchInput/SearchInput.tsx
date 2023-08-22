@@ -16,7 +16,7 @@ export const SearchInput = ({ validateCountryFlagName, isCountryGuessed }: Props
     };
 
     const inputChangeHandler = () => {
-        const inputValue = inputSearchRef.current?.value;
+        const inputValue = inputSearchRef.current?.value.toLowerCase();
         if (!inputValue) return;
         validateCountryFlagName(inputValue);
     };
