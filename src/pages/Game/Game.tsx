@@ -1,4 +1,4 @@
-import { SearchInput, ErrorModal, LoadingSpinner } from '@/components';
+import { SearchInput, ErrorModal, LoadingSpinner, QuantityCounter } from '@/components';
 import { Flags } from './Flags/Flags';
 import { useSupabaseCountriesStore } from '@/store/supabaseCountriesStore/supabaseCountriesStore';
 import { SupabaseRow } from '@/types/api/supabase';
@@ -47,7 +47,10 @@ export const Game = () => {
             <AnimatePresence>
                 {error && <ErrorModal key="error-modal" closeModalHandler={clearError} errorText={error.message} />}
             </AnimatePresence>
-            <SearchInput isCountryGuessed={isCountryGuessed} validateCountryFlagName={validateCountryFlagName} />
+            <div className="mt-3 mx-3 flex items-center gap-2">
+                <SearchInput isCountryGuessed={isCountryGuessed} validateCountryFlagName={validateCountryFlagName} />
+                <QuantityCounter quantity={countries.length} guessedCountries={guessedCountries} />
+            </div>
             {isDataLoading ? <LoadingSpinner /> : <Flags countries={guessedCountries} />}
         </>
     );

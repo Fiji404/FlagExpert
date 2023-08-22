@@ -14,7 +14,7 @@
         width: calc(0.5vw + 0.2rem);
     }
     body::-webkit-scrollbar-thumb {
-        @apply bg-[#b1b1b1] dark:bg-[#f00] rounded-full;
+        @apply bg-[#b1b1b1] rounded-full;
     }
     body.dark::-webkit-scrollbar-thumb {
         @apply bg-[#303030];
