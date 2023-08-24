@@ -10,14 +10,17 @@
     html {
         scroll-behavior: smooth;
     }
-    body::-webkit-scrollbar {
+    *::-webkit-scrollbar {
         width: calc(0.5vw + 0.2rem);
     }
-    body::-webkit-scrollbar-thumb {
-        @apply bg-[#b1b1b1] rounded-full;
+    *::-webkit-scrollbar-thumb {
+        @apply bg-[#b1b1b1] dark:bg-[#303030] rounded-full;
     }
     body.dark::-webkit-scrollbar-thumb {
         @apply bg-[#303030];
+    }
+    .scrollbar-hidden::-webkit-scrollbar {
+        @apply w-0
     }
     body {
         @apply bg-primaryLight;

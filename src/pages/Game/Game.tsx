@@ -43,15 +43,15 @@ export const Game = () => {
     }, [countries, isDataLoading]);
 
     return (
-        <>
+        <div className="max-h-[90   vh] flex flex-col overflow-auto">
             <AnimatePresence>
                 {error && <ErrorModal key="error-modal" closeModalHandler={clearError} errorText={error.message} />}
             </AnimatePresence>
-            <div className="mt-3 mx-3 flex items-center gap-2">
+            <div className="sticky top-0 mt-3 mx-3 flex items-center gap-2">
                 <SearchInput isCountryGuessed={isCountryGuessed} validateCountryFlagName={validateCountryFlagName} />
                 <QuantityCounter quantity={countries.length} guessedCountries={guessedCountries} />
             </div>
             {isDataLoading ? <LoadingSpinner /> : <Flags countries={guessedCountries} />}
-        </>
+        </div>
     );
 };
