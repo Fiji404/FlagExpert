@@ -18,6 +18,9 @@ export default {
                 originate: {
                     '100%': { opacity: '1' }
                 },
+                fadeOut: {
+                    '100%': { opacity: '0' }
+                },
                 flip: {
                     '50%': { translate: '0 -10px', rotate: 'y 180deg', backgroundColor: '#233a21' },
                     '100%': { translate: '0 0px', rotate: 'y 0deg', backgroundColor: '#233a21' }

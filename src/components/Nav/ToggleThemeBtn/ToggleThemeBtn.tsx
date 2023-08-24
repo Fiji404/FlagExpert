@@ -1,3 +1,4 @@
+import { Tooltip } from '@/components/UI/Tooltip/Tooltip';
 import { useEffect, useState } from 'react';
 import { BsFillMoonStarsFill, BsSun } from 'react-icons/bs';
 
@@ -17,8 +18,10 @@ export const ToggleThemeBtn = () => {
     };
 
     return (
-        <button onClick={toggleThemeHandler} aria-label="Toggle theme button">
-            {iconType}
-        </button>
+        <Tooltip tooltipContent="Theme toggle" delay={300}>
+            <button onClick={toggleThemeHandler} aria-label="Theme toggle">
+                {iconType}
+            </button>
+        </Tooltip>
     );
 };
