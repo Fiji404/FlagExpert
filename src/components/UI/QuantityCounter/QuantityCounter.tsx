@@ -11,7 +11,7 @@ export const QuantityCounter = ({ quantity, guessedCountries }: Props) => {
         0
     );
     return (
-        <div className="dark:text-[#fff] font-medium">
+        <div className="font-medium dark:text-[#fff]">
             {guessedCountriesAmount} / {quantity}
         </div>
     );

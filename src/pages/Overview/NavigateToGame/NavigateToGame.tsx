@@ -33,9 +33,9 @@ export const NavigateToGame = () => {
     return (
         <form
             onSubmit={procceedToGameFormHandler}
-            className="mt-16 mb-10 flex justify-end gap-4 max-w-[95%] opacity-0 animate-[originate_700ms_1s_forwards]"
+            className="mb-10 mt-16 flex max-w-[95%] animate-[originate_700ms_1s_forwards] justify-end gap-4 opacity-0"
         >
-            <label className="flex gap-1 text-sm items-center text-accentDark">
+            <label className="flex items-center gap-1 text-sm text-accentDark">
                 Don't show me this again
                 <input
                     ref={skipGameOverviewInputRef}
@@ -46,8 +46,8 @@ export const NavigateToGame = () => {
                 />
             </label>
             <button
-                className="flex items-center dark:bg-[rgb(19,19,19)] bg-[#ffffff] border border-accentLight dark:border-[#242424] py-1 px-3 
-                                rounded-md text-xl dark:text-[#fff] text-[#000] hover:bg-[#f3f3f3] dark:hover:bg-[rgb(27,27,27)] transition-colors"
+                className="flex items-center rounded-md border border-accentLight bg-[#ffffff] px-3 py-1 text-xl 
+                                text-[#000] transition-colors hover:bg-[#f3f3f3] dark:border-[#242424] dark:bg-[rgb(19,19,19)] dark:text-[#fff] dark:hover:bg-[rgb(27,27,27)]"
             >
                 Next <MdOutlineArrowForwardIos />
             </button>

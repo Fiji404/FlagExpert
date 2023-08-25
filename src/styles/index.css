@@ -14,7 +14,7 @@
         width: calc(0.5vw + 0.2rem);
     }
     *::-webkit-scrollbar-thumb {
-        @apply bg-[#b1b1b1] dark:bg-[#303030] rounded-full;
+        @apply rounded-full bg-[#b1b1b1] dark:bg-[#303030];
     }
     body.dark::-webkit-scrollbar-thumb {
         @apply bg-[#303030];
@@ -40,19 +40,19 @@
         --highlight-color: #222;
     }
     .benefit-icon {
-        @apply text-[2rem] min-w-[2rem] aspect-square;
+        @apply aspect-square min-w-[2rem] text-[2rem];
     }
     .input-checkbox {
-        @apply appearance-none w-5 h-5 border border-accentDark rounded-sm relative cursor-pointer;
+        @apply relative h-5 w-5 cursor-pointer appearance-none rounded-sm border border-accentDark;
     }
     .input-checkbox:checked {
         @apply bg-black dark:bg-white;
     }
     .input-checkbox:checked::before {
-        @apply content-["\2713"] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xl dark:text-black text-white;
+        @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-xl text-white content-["\2713"] dark:text-black;
     }
     .theme-icon {
-        @apply text-white text-2xl hover:bg-[rgb(236,236,236)] dark:hover:bg-[rgb(37,37,37)] p-2 box-content rounded-md;
+        @apply box-content rounded-md p-2 text-2xl text-white hover:bg-[rgb(236,236,236)] dark:hover:bg-[rgb(37,37,37)];
     }
     .theme-icon.light {
         @apply text-black;

@@ -2,7 +2,7 @@ export const LoadingSpinner = () => {
     return (
         <div
             aria-label="Loading spinner"
-            className="mt-10 mx-auto w-10 h-10 border-4 rounded-full border-[#ccc] dark:border-[#353535] dark:border-t-transparent border-t-transparent animate-spin"
+            className="mx-auto mt-10 h-10 w-10 animate-spin rounded-full border-4 border-[#ccc] border-t-transparent dark:border-[#353535] dark:border-t-transparent"
         ></div>
     );
 };

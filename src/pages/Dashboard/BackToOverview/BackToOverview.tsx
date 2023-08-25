@@ -5,8 +5,8 @@ export const BackToOverview = () => {
     return (
         <Link
             to="/"
-            className="flex items-center w-max dark:text-white mt-4 ml-4 dark:bg-[#111111] py-1 px-3 rounded-md border dark:border-[#303030] 
-            hover:bg-[#e7e7e7] dark:hover:bg-[#1f1f1f] bg-[#fff] text-black border-accentLight transition-colors"
+            className="ml-4 mt-4 flex w-max items-center rounded-md border border-accentLight bg-[#fff] px-3 py-1 text-black 
+            transition-colors hover:bg-[#e7e7e7] dark:border-[#303030] dark:bg-[#111111] dark:text-white dark:hover:bg-[#1f1f1f]"
         >
             <MdArrowBackIos /> Back to overview
         </Link>

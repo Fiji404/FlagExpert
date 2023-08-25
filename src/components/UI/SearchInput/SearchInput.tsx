@@ -26,12 +26,12 @@ export const SearchInput = ({ validateCountryFlagName, isCountryGuessed }: Props
     }, [isCountryGuessed]);
 
     return (
-        <div className="sticky top-0 grow flex items-center dark:bg-[#111] bg-[#fff] gap-2 rounded-md pl-2  border dark:border-[#222] border-[#dfdfdf] dark:focus-within:border-[#464646] focus-within:border-[#b3b3b3]  transition-colors">
-            <BiSearch className="dark:text-white text-black text-xl" />
+        <div className="sticky top-0 flex grow items-center gap-2 rounded-md border border-[#dfdfdf] bg-[#fff]  pl-2 transition-colors focus-within:border-[#b3b3b3] dark:border-[#222] dark:bg-[#111]  dark:focus-within:border-[#464646]">
+            <BiSearch className="text-xl text-black dark:text-white" />
             <input
                 ref={inputSearchRef}
                 onChange={debounce(inputChangeHandler, 250)}
-                className="min-h-[40px] grow bg-inherit outline-none dark:text-white text-black"
+                className="min-h-[40px] grow bg-inherit text-black outline-none dark:text-white"
                 placeholder="Type your flag here"
                 type="text"
             />

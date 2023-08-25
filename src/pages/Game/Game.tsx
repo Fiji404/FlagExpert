@@ -43,11 +43,11 @@ export const Game = () => {
     }, [countries, isDataLoading]);
 
     return (
-        <div className="max-h-[90vh] flex flex-col overflow-auto">
+        <div className="flex max-h-[90vh] flex-col overflow-auto">
             <AnimatePresence>
                 {error && <ErrorModal key="error-modal" closeModalHandler={clearError} errorText={error.message} />}
             </AnimatePresence>
-            <div className="sticky top-0 mt-3 mx-3 flex items-center gap-2">
+            <div className="sticky top-0 mx-3 mt-3 flex items-center gap-2">
                 <SearchInput isCountryGuessed={isCountryGuessed} validateCountryFlagName={validateCountryFlagName} />
                 <QuantityCounter quantity={countries.length} guessedCountries={guessedCountries} />
             </div>

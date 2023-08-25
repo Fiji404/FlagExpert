@@ -36,14 +36,14 @@ export const Flag = memo(({ countryName, countryFlagURL, isCountryGuessed }: Pro
 
     return (
         <>
-            {isFlagLoading && !isFlagError && <Skeleton count={1} className="min-w-[100px] min-h-[80px]" />}
+            {isFlagLoading && !isFlagError && <Skeleton count={1} className="min-h-[80px] min-w-[100px]" />}
             <motion.li
                 ref={flagElementRef}
                 animate={!isFlagInView && isCountryGuessed && 'visible'}
                 className={twMerge(
-                    `flex justify-center flex-col items-center bg-[#f8f8f8] dark:bg-[#161616] ${
+                    `flex flex-col items-center justify-center bg-[#f8f8f8] dark:bg-[#161616] ${
                         isFlagAnimPlayed && 'dark:bg-[#233a21]'
-                    } border border-[#e0e0e0] dark:border-[#222222] grow min-w-[50px] max-w-[120px] box-content px-3 py-2 rounded-md aspect-video ${
+                    } box-content aspect-video min-w-[50px] max-w-[120px] grow rounded-md border border-[#e0e0e0] px-3 py-2 dark:border-[#222222] ${
                         isCountryGuessed && isFlagInView && !isFlagAnimPlayed ? 'animate-flip' : ''
                     } ${isFlagLoading && !isFlagError ? 'hidden' : 'block'}`
                 )}
@@ -55,12 +55,12 @@ export const Flag = memo(({ countryName, countryFlagURL, isCountryGuessed }: Pro
                     <img
                         onError={loadErrorCountryFlagHandler}
                         onLoad={loadedCountryFlagHandler}
-                        className="w-full h-full aspect-video"
+                        className="aspect-video h-full w-full"
                         src={countryFlagURL}
                         alt={countryName}
                     />
                 )}
-                {isCountryGuessed && <p className="mt-2 dark:text-white text-black text-center">{countryName}</p>}
+                {isCountryGuessed && <p className="mt-2 text-center text-black dark:text-white">{countryName}</p>}
             </motion.li>
         </>
     );

@@ -4,7 +4,7 @@ export const Dashboard = () => {
     return (
         <>
             <BackToOverview />
-            <h1 className="w-[95%] mx-auto mt-12 text-center text-5xl font-bold dark:text-white text-black">
+            <h1 className="mx-auto mt-12 w-[95%] text-center text-5xl font-bold text-black dark:text-white">
                 Choose your game mode
             </h1>
             <GamesList />
