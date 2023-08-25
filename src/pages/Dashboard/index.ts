@@ -1,2 +1,2 @@
 export { BackToOverview } from './BackToOverview/BackToOverview';
-export { Games } from './Games/Games';
+export { GamesList } from './GamesList/GamesList';
