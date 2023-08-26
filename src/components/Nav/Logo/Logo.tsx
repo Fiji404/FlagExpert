@@ -17,7 +17,7 @@ export const Logo = () => {
         <h1>
             <Link
                 onClick={logoClickHandler}
-                className="group flex items-center gap-1 text-[1.6rem] font-extrabold transition-all hover:text-[#727272] dark:text-white dark:hover:brightness-75"
+                className="focus:outline-style group flex items-center gap-1 rounded-sm text-[1.6rem] font-extrabold transition-all hover:text-[#727272] dark:text-white dark:hover:brightness-75"
                 to="/"
             >
                 Flaggy

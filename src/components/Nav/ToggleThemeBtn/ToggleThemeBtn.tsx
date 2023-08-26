@@ -19,7 +19,7 @@ export const ToggleThemeBtn = () => {
 
     return (
         <Tooltip tooltipContent="Theme toggle" delay={300}>
-            <button onClick={toggleThemeHandler} aria-label="Theme toggle">
+            <button onClick={toggleThemeHandler} aria-label="Theme toggle" className="focus:outline-style rounded-sm">
                 {iconType}
             </button>
         </Tooltip>

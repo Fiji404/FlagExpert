@@ -57,4 +57,7 @@
     .theme-icon.light {
         @apply text-black;
     }
+    .outline-style {
+        @apply outline outline-2  outline-[#5EB0EF] dark:outline-[#1276E2];
+    }
 }
