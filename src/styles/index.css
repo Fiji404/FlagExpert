@@ -51,4 +51,10 @@
     .outline-style {
         @apply outline outline-2  outline-[#5EB0EF] dark:outline-[#1276E2];
     }
+    .button-primary {
+        @apply focus:outline-style flex items-center gap-2 rounded-md bg-[#ddf3e4] px-2 text-lg font-semibold text-[#214134] transition-colors hover:bg-[#cdf0d8] dark:bg-[#152a27] dark:text-[#3CDA8E] dark:hover:bg-[#234742];
+    }
+    .button-primary.button-warning {
+        @apply cursor-not-allowed bg-[#FCF3AF] text-[#7D6523] dark:bg-[#342A16] dark:text-[#E6D62F];
+    }
 }

@@ -17,11 +17,11 @@ export const Logo = () => {
         <h1>
             <Link
                 onClick={logoClickHandler}
-                className="focus:outline-style group flex items-center gap-1 rounded-sm text-[1.6rem] font-extrabold transition-all hover:text-[#727272] dark:text-white dark:hover:brightness-75"
+                className="focus:outline-style flex items-center gap-1 rounded-sm text-[1.6rem] font-extrabold transition-colors hover:text-[#32E02C] dark:text-white dark:hover:text-[#32E02C]"
                 to="/"
             >
                 Flaggy
-                <AiFillFlag className="text-[#32e02c] transition-colors group-hover:text-[#727272] group-hover:brightness-75" />
+                <AiFillFlag className="text-[#32e02c]" />
             </Link>
         </h1>
     );

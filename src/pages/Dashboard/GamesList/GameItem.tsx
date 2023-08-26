@@ -23,11 +23,7 @@ export const GameItem = ({ name, desc, icon, status, route }: Props) => {
             </h2>
             <p className="text-xl font-normal text-[#5c5c5c] dark:text-[#888888]">{desc}</p>
             <Link
-                className={`ml-auto flex items-center gap-2 rounded-md px-2 ${
-                    status === 'available'
-                        ? 'bg-[#ddf3e4] text-[#214134] hover:bg-[#cdf0d8] dark:bg-[#152a27] dark:text-[#3CDA8E] dark:hover:bg-[#234742]'
-                        : 'cursor-not-allowed bg-[#FCF3AF] text-[#7D6523] dark:bg-[#342A16] dark:text-[#E6D62F]'
-                } text-lg  transition-colors`}
+                className={`ml-auto ${status === 'available' ? 'button-primary' : 'button-primary button-warning'} `}
                 to={route}
             >
                 {status === 'available' ? (

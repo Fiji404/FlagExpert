@@ -1,6 +1,6 @@
 import { useDefaultAppRouteStore } from '@/store/defaultAppRouteStore/defaultAppRouteStore';
 import { useEffect, useRef } from 'react';
-import { MdOutlineArrowForwardIos } from 'react-icons/md';
+import { BsArrowRight } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import * as Checkbox from '@radix-ui/react-checkbox';
 import { FaCheck } from 'react-icons/fa';
@@ -49,10 +49,9 @@ export const NavigateToGame = () => {
                 </Checkbox.Root>
             </label>
             <button
-                className="focus:outline-style flex items-center rounded-md border border-[#dfdfdf] bg-[#fff] px-3 py-1 text-xl 
-                                text-black transition-colors hover:bg-[#f7f7f7] dark:border-[#41464C] dark:bg-[rgb(19,19,19)] dark:text-[#fff] dark:hover:bg-[rgb(27,27,27)]"
+                className="button-primary"
             >
-                Next <MdOutlineArrowForwardIos />
+                Next <BsArrowRight className="text-[#2C4D3F] dark:text-[#3CDA8E]" />
             </button>
         </form>
     );
