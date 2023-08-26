@@ -2,6 +2,10 @@ import { useDefaultAppRouteStore } from '@/store/defaultAppRouteStore/defaultApp
 import { useEffect, useRef } from 'react';
 import { MdOutlineArrowForwardIos } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
+import * as Checkbox from '@radix-ui/react-checkbox';
+import { FaCheck } from 'react-icons/fa';
+
+type CheckboxState = 'checked' | 'unchecked';
 
 export const NavigateToGame = () => {
     const { defaultAppRoute, getDefaultAppRoute, setDefaultAppRouteToLS } = useDefaultAppRouteStore(
@@ -13,16 +17,12 @@ export const NavigateToGame = () => {
     );
 
     const navigate = useNavigate();
-    const skipGameOverviewInputRef = useRef<HTMLInputElement>(null);
+    const skipGameOverviewInputRef = useRef<HTMLButtonElement>(null);
 
     const procceedToGameFormHandler = (e: React.FormEvent) => {
         e.preventDefault();
-        const isGameOverviewSkipped = skipGameOverviewInputRef.current?.checked;
-        if (!isGameOverviewSkipped) {
-            setDefaultAppRouteToLS(null);
-            return navigate('/dashboard');
-        }
-        setDefaultAppRouteToLS(isGameOverviewSkipped && '/dashboard');
+        const skipOverviewCheckboxState = skipGameOverviewInputRef.current?.dataset.state as CheckboxState;
+        setDefaultAppRouteToLS(skipOverviewCheckboxState === 'checked' ? '/dashboard' : null);
         navigate('/dashboard');
     };
 
@@ -37,17 +37,20 @@ export const NavigateToGame = () => {
         >
             <label className="flex items-center gap-1 text-sm text-accentDark">
                 Don't show me this again
-                <input
+                <Checkbox.Root
                     ref={skipGameOverviewInputRef}
-                    defaultChecked={defaultAppRoute === '/dashboard'}
+                    className="focus:outline-style h-5 w-5 cursor-pointer rounded-sm border border-[#dfdfdf] dark:border-[#41464C]"
                     name="skip-game-overview"
-                    className="input-checkbox"
-                    type="checkbox"
-                />
+                    defaultChecked={defaultAppRoute === '/dashboard'}
+                >
+                    <Checkbox.Indicator className="flex items-center justify-center">
+                        <FaCheck className="text-black dark:text-white" />
+                    </Checkbox.Indicator>
+                </Checkbox.Root>
             </label>
             <button
-                className="flex items-center rounded-md border border-accentLight bg-[#ffffff] px-3 py-1 text-xl 
-                                text-[#000] transition-colors hover:bg-[#f3f3f3] dark:border-[#242424] dark:bg-[rgb(19,19,19)] dark:text-[#fff] dark:hover:bg-[rgb(27,27,27)]"
+                className="focus:outline-style flex items-center rounded-md border border-[#dfdfdf] bg-[#fff] px-3 py-1 text-xl 
+                                text-black transition-colors hover:bg-[#f7f7f7] dark:border-[#41464C] dark:bg-[rgb(19,19,19)] dark:text-[#fff] dark:hover:bg-[rgb(27,27,27)]"
             >
                 Next <MdOutlineArrowForwardIos />
             </button>

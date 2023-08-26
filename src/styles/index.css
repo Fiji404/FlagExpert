@@ -42,15 +42,6 @@
     .benefit-icon {
         @apply aspect-square min-w-[2rem] text-[2rem];
     }
-    .input-checkbox {
-        @apply relative h-5 w-5 cursor-pointer appearance-none rounded-sm border border-accentDark;
-    }
-    .input-checkbox:checked {
-        @apply bg-black dark:bg-white;
-    }
-    .input-checkbox:checked::before {
-        @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-xl text-white content-["\2713"] dark:text-black;
-    }
     .theme-icon {
         @apply box-content rounded-md p-2 text-2xl text-white hover:bg-[rgb(236,236,236)] dark:hover:bg-[rgb(37,37,37)];
     }
