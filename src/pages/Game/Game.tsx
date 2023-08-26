@@ -43,7 +43,7 @@ export const Game = () => {
     }, [countries, isDataLoading]);
 
     return (
-        <div className="flex max-h-[90vh] flex-col overflow-auto">
+        <div className="flex max-h-[calc(100vh-65px)] flex-col overflow-auto">
             <AnimatePresence>
                 {error && <ErrorModal key="error-modal" closeModalHandler={clearError} errorText={error.message} />}
             </AnimatePresence>

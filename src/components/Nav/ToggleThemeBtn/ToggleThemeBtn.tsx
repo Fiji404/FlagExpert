@@ -1,4 +1,4 @@
-import { Tooltip } from '@/components/UI/Tooltip/Tooltip';
+import { Tooltip } from '@/components/';
 import { useEffect, useState } from 'react';
 import { BsFillMoonStarsFill, BsSun } from 'react-icons/bs';
 
