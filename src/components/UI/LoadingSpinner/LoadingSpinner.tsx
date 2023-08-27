@@ -1,8 +1,8 @@
 export const LoadingSpinner = () => {
     return (
-        <div
+        <span
             aria-label="Loading spinner"
-            className="mx-auto mt-10 h-10 w-10 animate-spin rounded-full border-4 border-[#ccc] border-t-transparent dark:border-[#353535] dark:border-t-transparent"
-        ></div>
+            className="mx-auto mt-10 h-10 w-10 animate-spin rounded-full border-4 border-[#353535] border-b-transparent border-t-transparent dark:border-[#c7c7c7] dark:border-b-transparent dark:border-t-transparent"
+        />
     );
 };
