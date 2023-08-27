@@ -48,9 +48,7 @@ export const NavigateToGame = () => {
                     </Checkbox.Indicator>
                 </Checkbox.Root>
             </label>
-            <button
-                className="button-primary"
-            >
+            <button className="button-primary">
                 Next <BsArrowRight className="text-[#2C4D3F] dark:text-[#3CDA8E]" />
             </button>
         </form>

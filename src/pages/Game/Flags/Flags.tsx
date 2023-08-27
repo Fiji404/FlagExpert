@@ -7,7 +7,7 @@ interface Props {
 
 export const Flags = ({ countries }: Props) => {
     return (
-        <ul className="pt-5 flex flex-wrap justify-center gap-5 overflow-auto px-3 pb-4 ">
+        <ul className="flex flex-wrap justify-center gap-5 overflow-auto px-3 pb-4 pt-5 ">
             {countries.map(country => (
                 <Flag
                     key={country.id}

@@ -1,4 +1,4 @@
-import { getLocalStorageValue } from '@/utils';
+import { getLocalStorageValue } from '@/utils/getLocalStorageValue/getLocalStorageValue';
 import { create } from 'zustand';
 
 type DefaultRoute = '/dashboard' | null;

@@ -35,14 +35,16 @@ export const Flag = memo(({ countryName, countryFlagURL, isCountryGuessed }: Pro
                     isCountryGuessed
                         ? {
                               translateY: [-8, 0],
-                              rotateY: [180, 0],
+                              rotateY: [180, 0]
                           }
                         : {}
                 }
                 viewport={{ once: true }}
-                className={twMerge(`box-content flex aspect-video min-w-[50px] max-w-[120px] grow  flex-col items-center justify-center rounded-md border border-[#dfdfdf] bg-[#f8f8f8] px-3 py-2 dark:border-[#2a2c30] dark:bg-[#161616] ${
-                    isFlagLoading && !isFlagError ? 'hidden' : 'flex'
-                } ${isCountryGuessed ? 'dark:bg-[#152a27] bg-[#ddf3e4]' : ''}`)}
+                className={twMerge(
+                    `box-content flex aspect-video min-w-[50px] max-w-[120px] grow  flex-col items-center justify-center rounded-md border border-[#dfdfdf] bg-[#f8f8f8] px-3 py-2 dark:border-[#2a2c30] dark:bg-[#161616] ${
+                        isFlagLoading && !isFlagError ? 'hidden' : 'flex'
+                    } ${isCountryGuessed ? 'bg-[#ddf3e4] dark:bg-[#152a27]' : ''}`
+                )}
                 transition={{ duration: 1.1, type: 'spring' }}
             >
                 {isFlagError ? (
@@ -57,7 +59,7 @@ export const Flag = memo(({ countryName, countryFlagURL, isCountryGuessed }: Pro
                     />
                 )}
                 {isCountryGuessed && (
-                    <p className="mt-2 text-center font-semibold dark:text-[#3CDA8E] text-[#214134]">{countryName}</p>
+                    <p className="mt-2 text-center font-semibold text-[#214134] dark:text-[#3CDA8E]">{countryName}</p>
                 )}
             </motion.li>
         </>

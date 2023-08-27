@@ -26,7 +26,7 @@ export const SearchInput = ({ validateCountryFlagName, isCountryGuessed }: Props
     }, [isCountryGuessed]);
 
     return (
-        <div className="sticky top-0 flex grow items-center gap-2 rounded-md border border-[#dfdfdf] bg-[#fff] pl-2 transition-colors dark:border-[#41464C] dark:bg-[#121213] focus-within:outline-style">
+        <div className="focus-within:outline-style sticky top-0 flex grow items-center gap-2 rounded-md border border-[#dfdfdf] bg-[#fff] pl-2 transition-colors dark:border-[#41464C] dark:bg-[#121213]">
             <BiSearch className="text-xl text-black dark:text-[#979aa7]" />
             <input
                 ref={inputSearchRef}
