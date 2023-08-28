@@ -1,8 +1,8 @@
-import { SearchInput, ErrorModal, LoadingSpinner, QuantityCounter } from '@/components';
+import { SearchInput, ErrorModal, LoadingSpinner, Counter } from '@/components';
 import { Flags } from './Flags/Flags';
 import { useSupabaseCountriesStore } from '@/store/supabaseCountriesStore/supabaseCountriesStore';
 import { SupabaseRow } from '@/types/api/supabase';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
 export interface GuessedCountries extends SupabaseRow {
@@ -13,6 +13,11 @@ export const Game = () => {
     const { countries, queryCountriesData, error, clearError, isDataLoading } = useSupabaseCountriesStore();
     const [guessedCountries, setGuessedCountries] = useState<GuessedCountries[]>([]);
     const [isCountryGuessed, setIsCountryGuessed] = useState(false);
+
+    const guessedCountriesAmount = useMemo(
+        () => guessedCountries.reduce((acc, { isCountryGuessed }) => (isCountryGuessed ? acc + 1 : acc), 0),
+        [guessedCountries]
+    );
 
     const validateCountryFlagName = (countryName: string) => {
         setIsCountryGuessed(false);
@@ -49,7 +54,7 @@ export const Game = () => {
             </AnimatePresence>
             <div className="sticky top-0 mx-3 mt-3 flex items-center gap-2">
                 <SearchInput isCountryGuessed={isCountryGuessed} validateCountryFlagName={validateCountryFlagName} />
-                <QuantityCounter quantity={countries.length} guessedCountries={guessedCountries} />
+                <Counter from={guessedCountriesAmount} to={guessedCountries.length} />
             </div>
             {isDataLoading ? <LoadingSpinner /> : <Flags countries={guessedCountries} />}
         </div>
