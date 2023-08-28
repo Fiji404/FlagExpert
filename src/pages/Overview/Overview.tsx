@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Intro, Benefits, NavigateToGame } from '.';
-import { useDefaultAppRouteStore } from '@/store/defaultAppRouteStore/defaultAppRouteStore';
+import { useDefaultAppRouteStore } from '@/store/defaultAppRouteStore';
 
 export const Overview = () => {
     const navigate = useNavigate();

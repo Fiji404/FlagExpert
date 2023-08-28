@@ -1,5 +1,5 @@
-export { SearchInput } from './SearchInput/SearchInput';
-export { ErrorModal } from './ErrorModal/ErrorModal';
-export { LoadingSpinner } from './LoadingSpinner/LoadingSpinner';
-export { Counter } from './Counter/Counter';
-export { Tooltip } from './Tooltip/Tooltip';
+export { SearchInput } from './SearchInput';
+export { ErrorModal } from './ErrorModal';
+export { LoadingSpinner } from './LoadingSpinner';
+export { Counter } from './Counter';
+export { Tooltip } from './Tooltip';

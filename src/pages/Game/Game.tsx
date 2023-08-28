@@ -1,7 +1,7 @@
 import { SearchInput, ErrorModal, LoadingSpinner, Counter } from '@/components';
 import { Flags } from './Flags/Flags';
-import { useSupabaseCountriesStore } from '@/store/supabaseCountriesStore/supabaseCountriesStore';
-import { SupabaseRow } from '@/types/api/supabase';
+import { useSupabaseCountriesStore } from '@/store/supabaseCountriesStore';
+import { SupabaseRow } from '@/types/supabase/api';
 import { useEffect, useState, useMemo } from 'react';
 import { AnimatePresence } from 'framer-motion';
 

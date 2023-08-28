@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { PostgrestError } from '@supabase/supabase-js';
 import { supabase } from '@/supabase';
-import { Query, SupabaseQueryResponse } from '@/types/api/supabase';
+import { Query, SupabaseQueryResponse } from '@/types/supabase/api';
 
 interface SupabaseCountriesStore {
     countries: SupabaseQueryResponse;

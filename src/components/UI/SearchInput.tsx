@@ -1,4 +1,4 @@
-import { debounce } from '@/utils/debounce/debounce';
+import { debounce } from '@/utils/debounce';
 import { useEffect, useRef } from 'react';
 import { BiSearch } from 'react-icons/bi';
 

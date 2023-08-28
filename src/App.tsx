@@ -1,4 +1,4 @@
-import { Layout } from './components/UI/Layout/Layout';
+import { Layout } from './components/UI/Layout';
 import { Overview, Dashboard, Game } from './pages';
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 

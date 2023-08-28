@@ -1,2 +1,2 @@
-export { Logo } from './Logo/Logo';
-export { ToggleThemeBtn } from './ToggleThemeBtn/ToggleThemeBtn';
+export { Logo } from './Logo';
+export { ToggleThemeBtn } from './ToggleThemeBtn';

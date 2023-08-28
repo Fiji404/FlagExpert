@@ -1,4 +1,4 @@
-import { useDefaultAppRouteStore } from '@/store/defaultAppRouteStore/defaultAppRouteStore';
+import { useDefaultAppRouteStore } from '@/store/defaultAppRouteStore';
 import { useEffect, useRef } from 'react';
 import { BsArrowRight } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';

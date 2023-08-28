@@ -1,3 +1,3 @@
-export { Intro } from './Intro/Intro';
+export { Intro } from './Intro';
 export { Benefits } from './Benefits/Benefits';
-export { NavigateToGame } from './NavigateToGame/NavigateToGame';
+export { NavigateToGame } from './NavigateToGame';
