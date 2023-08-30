@@ -31,7 +31,7 @@ export const ErrorModal = ({ errorText, closeModalHandler }: Props) => {
         >
             <h2 className="flex items-center gap-2 text-center text-xl">
                 <BiError className="text-3xl dark:text-[#ff6179]" />
-                {SUPABASE_FRIENDLY_ERROR_NAMES[errorText].title || errorText}
+                {SUPABASE_FRIENDLY_ERROR_NAMES[errorText]?.title || errorText}
             </h2>
             {SUPABASE_FRIENDLY_ERROR_NAMES[errorText] && (
                 <p className="text-center text-[#742f39d0] dark:text-[#c69fa5da]">

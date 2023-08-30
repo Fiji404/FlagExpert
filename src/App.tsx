@@ -1,5 +1,5 @@
 import { Layout } from './components/UI/Layout';
-import { Overview, Dashboard, Game } from './pages';
+import { Overview, Dashboard, Game, SignIn } from './pages';
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 
 const router = createBrowserRouter(
@@ -8,6 +8,7 @@ const router = createBrowserRouter(
             <Route index element={<Overview />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/game/:game" element={<Game />} />
+            <Route path="/auth/signin" element={<SignIn />} />
         </Route>
     )
 );
