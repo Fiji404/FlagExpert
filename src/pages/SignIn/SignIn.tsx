@@ -4,9 +4,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { Label } from '@radix-ui/react-label';
 import { ErrorMessage } from '@/components/UI/ErrorMessage';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import * as z from 'zod';
+import { Link } from '@/components/UI/Link';
+import { Button } from '@/components/UI/Button';
 
 type FormSchema = z.infer<typeof formSchema>;
 
@@ -59,15 +61,8 @@ export const SignIn = () => {
                 </Label>
                 {errors.password && <ErrorMessage message={errors.password.message} />}
                 <div className="mt-6 flex justify-between">
-                    <Link
-                        className="rounded-md bg-[#edf2ff] px-2 py-1 text-lg font-medium text-[#0A67CB] transition-colors hover:bg-[#E6EDFE] dark:bg-[#0066ff2b] dark:text-[#6bc1ff] dark:hover:bg-[#006efe3a]"
-                        to="/auth/signup"
-                    >
-                        Create account
-                    </Link>
-                    <button className="gap-2 rounded-md bg-[#02ba3c16] px-2 text-center text-lg font-medium text-[#006b3be7] transition-colors hover:bg-[#01a63522] dark:bg-[#152a27] dark:text-[#3CDA8E] dark:hover:bg-[#234742]">
-                        Sign in
-                    </button>
+                    <Link to="/auth/signup">Create account</Link>
+                    <Button color="green">Sign in</Button>
                 </div>
             </form>
         </main>

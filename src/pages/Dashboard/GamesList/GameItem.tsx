@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom';
+import { Link } from '@/components/UI/Link';
 import { BsArrowRight } from 'react-icons/bs';
 import { IoIosConstruct } from 'react-icons/io';
-
 type GameAvailabilityStatus = 'available' | 'in-progress';
 
 interface Props {
@@ -23,7 +22,7 @@ export const GameItem = ({ name, desc, icon, status, route }: Props) => {
             </h2>
             <p className="text-xl font-normal text-[#5c5c5c] dark:text-[#888888]">{desc}</p>
             <Link
-                className={`ml-auto ${status === 'available' ? 'button-primary' : 'button-primary button-warning'} `}
+                color={status === 'available' ? 'green' : 'warning'} className="ml-auto"
                 to={route}
             >
                 {status === 'available' ? (
