@@ -6,7 +6,7 @@ interface AuthStore {
     user: User | null;
     session: Session | null;
     authError: AuthError | null;
-    clearError(): void;
+    clearAuthError(): void;
     signInWithEmail(email: string, password: string): void;
 }
 
@@ -14,7 +14,7 @@ export const useAuthStore = create<AuthStore>(set => ({
     user: null,
     session: null,
     authError: null,
-    clearError() {
+    clearAuthError() {
         set({ authError: null });
     },
     async signInWithEmail(email, password) {
