@@ -14,17 +14,14 @@ interface Props {
 export const GameItem = ({ name, desc, icon, status, route }: Props) => {
     return (
         <section
-            className="flex min-h-[220px] w-full grow basis-80 flex-col items-center justify-between gap-2 rounded-md border bg-[#fff] p-4 text-center
-            font-semibold text-black transition-colors hover:bg-[rgb(252,252,252)] dark:border-[#303030] dark:bg-[rgb(19,19,19)] dark:text-white dark:hover:bg-[rgb(22,22,22)]"
+            className="flex grow basis-80 flex-col items-center justify-between gap-2 rounded-md border bg-[#fff] p-4 text-center
+            font-semibold text-black transition-colors  dark:border-[#303030] dark:bg-[rgb(19,19,19)] dark:text-white dark:hover:bg-[rgb(22,22,22)]"
         >
             <h2 className="flex items-center gap-2 text-4xl">
                 {name} {icon}
             </h2>
             <p className="text-xl font-normal text-[#5c5c5c] dark:text-[#888888]">{desc}</p>
-            <Link
-                color={status === 'available' ? 'green' : 'warning'} className="ml-auto"
-                to={route}
-            >
+            <Link color={status === 'available' ? 'green' : 'warning'} className="ml-auto" to={route}>
                 {status === 'available' ? (
                     <>
                         Next <BsArrowRight className="text-[#2C4D3F] dark:text-[#3CDA8E]" />

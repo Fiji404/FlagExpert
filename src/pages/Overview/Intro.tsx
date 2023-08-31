@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export const Intro = () => {
     return (
-        <header className="px-2">
+        <header>
             <motion.h2
                 className="mt-20 text-center text-7xl font-bold text-black dark:text-white"
                 initial={{ translateY: '-200%', opacity: 0 }}

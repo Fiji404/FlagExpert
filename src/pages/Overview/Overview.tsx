@@ -2,9 +2,9 @@ import { Intro, Benefits } from '.';
 
 export const Overview = () => {
     return (
-        <section>
+        <main className='px-5'>
             <Intro />
             <Benefits />
-        </section>
+        </main>
     );
 };

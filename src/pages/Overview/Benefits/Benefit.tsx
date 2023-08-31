@@ -7,8 +7,7 @@ interface Props {
 export const Benefit = ({ name, description, icon }: Props) => {
     return (
         <section
-            className="min-w-[300px] grow basis-80 animate-[originate_500ms_700ms_forwards] rounded-md border border-[#dddddd] bg-[#fff] px-4 py-6 opacity-0 
-            transition-all hover:scale-[1.01] hover:shadow-xl hover:shadow-[#ececec] dark:border-[#242424]  dark:bg-[rgb(19,19,19)] dark:hover:shadow-[rgb(23,23,23)]"
+            className="min-w-[350px] grow basis-80 animate-[originate_500ms_700ms_forwards] rounded-md border border-[#dddddd] bg-[#fff] px-4 py-6 opacity-0 dark:border-[#242424] dark:bg-[rgb(19,19,19)]"
         >
             <h3 className="flex items-center justify-center gap-3 text-center text-[2.2rem] font-semibold text-black dark:text-white">
                 {name} {icon}

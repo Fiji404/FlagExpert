@@ -36,7 +36,7 @@ const AVAILABLE_GAMES = [
 
 export const GamesList = () => {
     return (
-        <div className="mx-2 mt-10 flex flex-wrap gap-4">
+        <div className="mt-10 flex flex-wrap gap-4">
             {AVAILABLE_GAMES.map(game => (
                 <GameItem key={game.name} {...game} />
             ))}

@@ -32,7 +32,7 @@ const BENEFITS = [
 
 export const Benefits = () => {
     return (
-        <article className="mt-12 flex flex-wrap justify-center gap-5 px-4">
+        <article className="mt-12 flex flex-wrap justify-center gap-5">
             {BENEFITS.map(benefit => (
                 <Benefit key={benefit.name} {...benefit} />
             ))}
