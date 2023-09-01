@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import * as z from 'zod';
 import { Link } from '@/components/UI/Link';
 import { Button } from '@/components/UI/Button';
+import { OAuthProviders } from './OAuthProviders';
 
 type FormSchema = z.infer<typeof formSchema>;
 
@@ -19,7 +20,7 @@ const formSchema = z.object({
 
 export const SignIn = () => {
     const navigate = useNavigate();
-    const { user, authError, clearAuthError, signInWithEmail } = useAuthStore();
+    const { user, authError, clearAuthError, signIn } = useAuthStore();
     const {
         register,
         handleSubmit,
@@ -30,7 +31,7 @@ export const SignIn = () => {
 
     const formSubmitHandler = ({ email, password }: FormSchema) => {
         clearAuthError();
-        signInWithEmail(email, password);
+        signIn({ email, password });
     };
 
     useEffect(() => {
@@ -64,6 +65,8 @@ export const SignIn = () => {
                     <Link to="/auth/signup">Create account</Link>
                     <Button color="green">Sign in</Button>
                 </div>
+                <div aria-hidden="true" className="mt-4 h-[2px] w-full dark:bg-[#272727] bg-[#eee] rounded-full" />
+                <OAuthProviders />
             </form>
         </main>
     );

@@ -2,7 +2,7 @@ import { classed } from '@tw-classed/react';
 import { NavLink } from 'react-router-dom';
 
 export const clickableElementStyles = {
-    base: 'flex items-center gap-2 rounded-md text-lg font-medium transition-colors px-2 py-1 text-center',
+    base: 'flex justify-center items-center gap-2 rounded-md text-lg font-medium transition-colors px-2 py-1 text-center',
     variants: {
         green: 'bg-[#02ba3c16] text-[#006b3be7] hover:bg-[#01a63522] dark:bg-[#00fc7a12] dark:text-[#45ffa5d2] dark:hover:bg-[#00fd901c]'
     }
