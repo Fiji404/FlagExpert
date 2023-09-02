@@ -12,6 +12,7 @@ export const Link = classed(NavLink, {
     base: clickableElementStyles.base,
     variants: {
         color: {
+            default: 'dark:text-white border dark:border-[#222] dark:bg-[#161616]',
             blue: 'bg-[#edf2ff] text-[#0A67CB] hover:bg-[#E6EDFE] dark:bg-[#0066ff2b] dark:text-[#6bc1ff] dark:hover:bg-[#006efe3a]',
             green: clickableElementStyles.variants.green,
             warning: 'cursor-not-allowed bg-[#FCF3AF] text-[#7D6523] dark:bg-[#342A16] dark:text-[#E6D62F]'

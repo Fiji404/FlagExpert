@@ -1,5 +1,5 @@
 import { ErrorModal } from '@/components';
-import { useAuthStore } from '@/store/authStore';
+import { useSupabaseAuthStore } from '@/store/supabaseAuthStore';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { Label } from '@radix-ui/react-label';
@@ -20,7 +20,7 @@ const formSchema = z.object({
 
 export const SignIn = () => {
     const navigate = useNavigate();
-    const { user, authError, clearAuthError, signIn } = useAuthStore();
+    const { user, authError, clearAuthError, signIn } = useSupabaseAuthStore();
     const {
         register,
         handleSubmit,
@@ -44,7 +44,7 @@ export const SignIn = () => {
             <form
                 onSubmit={handleSubmit(formSubmitHandler)}
                 method="post"
-                className="flex w-full max-w-[600px] flex-col gap-2 rounded-md border border-[#f1f1f1] bg-[rgb(253,253,253)] px-4 py-6 dark:border-[#313131] dark:bg-[#111]"
+                className="flex w-full max-w-[600px] flex-col gap-2 rounded-md border border-[#f1f1f1] bg-[rgb(253,253,253)] px-4 py-6 dark:border-[#202020] dark:bg-[#111]"
             >
                 <h2 className="text-center text-4xl font-bold text-black dark:text-white">Sign in</h2>
                 <p className="mb-2 text-center text-lg text-[#494949] dark:text-[#969696]">
@@ -65,7 +65,7 @@ export const SignIn = () => {
                     <Link to="/auth/signup">Create account</Link>
                     <Button color="green">Sign in</Button>
                 </div>
-                <div aria-hidden="true" className="mt-4 h-[2px] w-full dark:bg-[#272727] bg-[#eee] rounded-full" />
+                <div aria-hidden="true" className="mt-4 h-[2px] w-full rounded-full bg-[#eee] dark:bg-[#222222]" />
                 <OAuthProviders />
             </form>
         </main>

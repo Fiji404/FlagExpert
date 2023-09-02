@@ -13,10 +13,10 @@ export const OAuthProviders = () => {
 
     return (
         <ul className="mx-auto mt-4 flex w-full max-w-[350px] flex-col items-center gap-2">
-            <Button color="default" type="button" onClick={() => googleAuthHandler('google')} className="w-full">
+            <Button color="default" type="button" onClick={() => googleAuthHandler('google')} className="w-full py-2">
                 <FcGoogle /> Continue with Google
             </Button>
-            <Button color="default" type="button" onClick={() => googleAuthHandler('github')} className="w-full">
+            <Button color="default" type="button" onClick={() => googleAuthHandler('github')} className="w-full py-2">
                 <FaGithub /> Continue with Github
             </Button>
         </ul>

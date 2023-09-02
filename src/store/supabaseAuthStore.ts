@@ -19,9 +19,10 @@ interface AuthStore {
     clearAuthError(): void;
     signIn(credentials: UserCredentials): void;
     signUp(credentials: PersonDetails): void;
+    signOut(): void;
 }
 
-export const useAuthStore = create<AuthStore>(set => ({
+export const useSupabaseAuthStore = create<AuthStore>(set => ({
     user: null,
     session: null,
     authError: null,
@@ -53,5 +54,10 @@ export const useAuthStore = create<AuthStore>(set => ({
         });
         if (error) return set({ authError: error });
         set({ user, session });
+    },
+    async signOut() {
+        const { error: authError } = await supabase.auth.signOut();
+        if (authError) return set({ authError });
+        set({ user: null, session: null });
     }
 }));

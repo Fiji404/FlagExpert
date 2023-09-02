@@ -1,12 +1,10 @@
 import { ErrorModal } from '@/components';
 import { Button } from '@/components/UI/Button';
 import { ErrorMessage } from '@/components/UI/ErrorMessage';
-import { useAuthStore } from '@/store/authStore';
+import { useSupabaseAuthStore } from '@/store/supabaseAuthStore';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Label } from '@radix-ui/react-label';
-import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 
 type FormSchema = z.infer<typeof formSchema>;
@@ -19,8 +17,7 @@ const formSchema = z.object({
 });
 
 export const SignUp = () => {
-    const navigate = useNavigate();
-    const { user, authError, clearAuthError, signUp } = useAuthStore();
+    const { authError, clearAuthError, signUp } = useSupabaseAuthStore();
     const {
         register,
         handleSubmit,
@@ -34,9 +31,6 @@ export const SignUp = () => {
         signUp({ email, password, name });
     };
 
-    useEffect(() => {
-        if (user) navigate('/dashboard');
-    }, [user, navigate]);
 
     return (
         <main className="flex h-full grow items-center justify-center">
