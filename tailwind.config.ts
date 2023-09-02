@@ -14,9 +14,6 @@ export default {
             keyframes: {
                 originate: {
                     '100%': { opacity: '1' }
-                },
-                fadeOut: {
-                    '100%': { opacity: '0' }
                 }
             }
         }

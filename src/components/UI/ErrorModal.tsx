@@ -7,12 +7,12 @@ interface Props {
     closeModalHandler(): void;
 }
 
-interface ErrorDescription {
+interface ErrorDetails {
     title: string;
     description: string;
 }
 
-const SUPABASE_FRIENDLY_ERROR_NAMES: Record<string, ErrorDescription> = {
+const SUPABASE_FRIENDLY_ERROR_NAMES: Record<string, ErrorDetails> = {
     'TypeError: Failed to fetch': {
         title: 'Network Error',
         description:

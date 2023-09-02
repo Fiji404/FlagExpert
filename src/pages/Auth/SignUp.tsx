@@ -31,7 +31,6 @@ export const SignUp = () => {
         signUp({ email, password, name });
     };
 
-
     return (
         <main className="flex h-full grow items-center justify-center">
             {authError && <ErrorModal errorText={authError.message} closeModalHandler={clearAuthError} />}

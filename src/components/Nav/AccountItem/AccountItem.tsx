@@ -16,7 +16,7 @@ export const AccountItem = ({ user }: Props) => {
 
     return (
         <>
-            <Button color="default" className='py-1' onClick={accountItemClickHandler}>
+            <Button color="default" className="py-1" onClick={accountItemClickHandler}>
                 <img className="max-w-[25px] rounded-full" src={user.user_metadata.picture} />
                 {user.user_metadata.name}
             </Button>

@@ -6,7 +6,7 @@ import { AccountItem } from './AccountItem/AccountItem';
 
 export const Nav = () => {
     const { session, getSession } = useSessionStore();
-    console.log(session)
+    console.log(session);
 
     useEffect(() => {
         getSession();
