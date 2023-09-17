@@ -50,7 +50,7 @@ export const SignUp = () => {
                             Name
                             <input className="form-input" {...register('name')} />
                         </Label>
-                        {errors.name && <ErrorMessage message={errors.name.message} />}
+                        {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
                     </div>
                     <Label className="form-label">
                         Last name (optional)
@@ -61,12 +61,12 @@ export const SignUp = () => {
                     E-mail
                     <input className="form-input" {...register('email')} />
                 </Label>
-                {errors.email && <ErrorMessage message={errors.email.message} />}
+                {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
                 <Label className="form-label">
                     Password
                     <input className="form-input" type="text" {...register('password')} />
                 </Label>
-                {errors.password && <ErrorMessage message={errors.password.message} />}
+                {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
                 <Button color="green" className="mt-6">
                     Sign up
                 </Button>
