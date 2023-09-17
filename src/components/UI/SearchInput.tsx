@@ -31,7 +31,7 @@ export const SearchInput = ({ validateCountryFlagName, isCountryGuessed }: Props
             <input
                 ref={inputSearchRef}
                 onChange={debounce(inputChangeHandler, 250)}
-                className="min-h-[40px] grow rounded-md bg-inherit text-black outline-none dark:text-white"
+                className="min-h-[40px] grow rounded-md bg-inherit text-black focus:outline-none dark:text-white"
                 placeholder="Type your flag here"
                 type="text"
             />

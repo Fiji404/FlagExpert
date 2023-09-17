@@ -16,6 +16,9 @@
     *::-webkit-scrollbar-thumb {
         @apply rounded-full bg-[#b1b1b1] dark:bg-[#303030];
     }
+    .outline-style {
+        @apply outline outline-2  outline-[#5EB0EF] dark:outline-[#1276E2];
+    }
     *:focus {
         @apply outline outline-2  outline-[#5EB0EF] dark:outline-[#1276E2];
     }

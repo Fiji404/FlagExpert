@@ -52,7 +52,7 @@ export const Game = () => {
             <AnimatePresence>
                 {error && <ErrorModal key="error-modal" closeModalHandler={clearError} errorText={error.message} />}
             </AnimatePresence>
-            <div className="sticky top-0 mx-3 mt-3 flex items-center gap-2">
+            <div className="sticky top-0 pt-3 flex items-center gap-2 bg-[#fff] px-3 pb-3 border-b border-[#f0f0f0] dark:border-[rgb(27,27,27)] shadow-md dark:bg-primaryDark dark:shadow-[#141414]">
                 <SearchInput isCountryGuessed={isCountryGuessed} validateCountryFlagName={validateCountryFlagName} />
                 <Counter from={guessedCountriesAmount} to={guessedCountries.length} />
             </div>
