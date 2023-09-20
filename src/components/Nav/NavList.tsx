@@ -1,3 +1,4 @@
+import { twMerge } from 'tailwind-merge';
 import { Link } from '../UI/Link';
 import { AccountItem } from './AccountItem/AccountItem';
 import { Session } from '@supabase/supabase-js';
@@ -9,7 +10,7 @@ interface Props {
 
 export const NavList = ({ session, className }: Props) => {
     return (
-        <ul className={`ml-auto mr-4 items-center gap-2 ${className}`}>
+        <ul className={twMerge("ml-auto mr-4 items-center gap-2", className)}>
             <li className='grow'>
                 <Link to="/">Home</Link>
             </li>
