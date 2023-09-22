@@ -10,15 +10,15 @@ interface Props {
 
 export const NavList = ({ session, className }: Props) => {
     return (
-        <ul className={twMerge("ml-auto mr-4 items-center gap-2", className)}>
-            <li className='grow'>
+        <ul className={twMerge('ml-auto mr-4 items-center gap-2', className)}>
+            <li className="grow">
                 <Link to="/">Home</Link>
             </li>
-            <li className='grow'>
+            <li className="grow">
                 <Link to="/dashboard">Dashboard</Link>
             </li>
             <li className="relative grow">
-                {session?.user ? <AccountItem user={session.user} /> : <Link to="/auth/signin">Sign in</Link>}
+                {session ? <AccountItem user={session.user} /> : <Link to="/auth/signin">Sign in</Link>}
             </li>
         </ul>
     );

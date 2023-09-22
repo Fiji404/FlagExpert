@@ -1,18 +1,14 @@
-import { useSessionStore } from '@/store/sessionStore';
+import { useSupabaseAuthStore } from '@/store/supabaseAuthStore';
 import { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 export const Auth = () => {
     const navigate = useNavigate();
-    const { session, getSession } = useSessionStore();
+    const { user } = useSupabaseAuthStore();
 
     useEffect(() => {
-        getSession();
-    }, [getSession]);
-
-    useEffect(() => {
-        if (session?.user) navigate('/dashboard');
-    }, [session, navigate]);
+        if (user) navigate('/dashboard');
+    }, [user, navigate]);
 
     return <Outlet />;
 };

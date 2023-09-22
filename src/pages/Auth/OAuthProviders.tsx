@@ -7,8 +7,7 @@ type AuthProvider = 'google' | 'github';
 
 export const OAuthProviders = () => {
     const googleAuthHandler = async (provider: AuthProvider) => {
-        const { data, error } = await supabase.auth.signInWithOAuth({ provider });
-        console.log(data, error);
+        await supabase.auth.signInWithOAuth({ provider });
     };
 
     return (
