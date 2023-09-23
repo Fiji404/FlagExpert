@@ -13,11 +13,10 @@ export const AccountItem = ({ user }: Props) => {
     const accountItemClickHandler = () => {
         setIsOptionsExpanded(isOptionsExpanded => !isOptionsExpanded);
     };
-
     return (
         <>
             <Button color="default" className="py-1" onClick={accountItemClickHandler}>
-                <img className="max-w-[25px] rounded-full" src={user.user_metadata.picture} />
+                <img className="max-w-[25px] rounded-full" src={user.user_metadata.avatar_url} />
                 {user.user_metadata.name}
             </Button>
             {isOptionsExpanded && <AccountOptions />}
