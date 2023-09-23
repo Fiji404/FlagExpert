@@ -3,14 +3,21 @@ import { useEffect, useState } from 'react';
 import { HamburgerBtn } from './HamburgerBtn';
 import { NavList } from './NavList';
 import { useSupabaseAuthStore } from '@/store/supabaseAuthStore';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const Nav = () => {
     const [isNavExpanded, setIsNavExpanded] = useState(false);
     const { session, getSession } = useSupabaseAuthStore();
+    const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         getSession();
     }, [getSession]);
+
+    useEffect(() => {
+        if (location.pathname.includes('/auth') && session?.user) navigate('/dashboard');
+    }, [location, session, navigate]);
 
     const toggleNavHandler = () => {
         setIsNavExpanded(isExpanded => !isExpanded);
