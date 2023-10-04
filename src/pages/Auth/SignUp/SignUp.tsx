@@ -6,12 +6,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Label } from '@radix-ui/react-label';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { Avatars } from './Avatars/Avatars';
 
 type FormSchema = z.infer<typeof formSchema>;
 
 const formSchema = z.object({
     name: z.string().min(1, { message: 'This field is required' }),
-    lastName: z.string(),
     email: z.string().email(),
     password: z.string().min(8, { message: 'Password must contain at least 8 character(s)' })
 });
@@ -44,19 +44,13 @@ export const SignUp = () => {
                     Hello there 👋! We're excited to have you back. Please use your credentials to access your account
                     and dive into our platform.
                 </p>
-                <div className="flex items-start justify-between gap-2">
-                    <div>
-                        <Label className="form-label">
-                            Name
-                            <input className="form-input" {...register('name')} />
-                        </Label>
-                        {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
-                    </div>
-                    <Label className="form-label">
-                        Last name (optional)
-                        <input className="form-input" {...register('lastName')} />
-                    </Label>
-                </div>
+                <Label className="form-label mx-auto">Avatar</Label>
+                <Avatars />
+                <Label className="form-label">
+                    Username
+                    <input className="form-input" {...register('name')} />
+                </Label>
+                {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
                 <Label className="form-label">
                     E-mail
                     <input className="form-input" {...register('email')} />
