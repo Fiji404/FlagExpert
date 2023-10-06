@@ -7,6 +7,7 @@ import { Label } from '@radix-ui/react-label';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Avatars } from './Avatars/Avatars';
+import { useState } from 'react';
 
 type FormSchema = z.infer<typeof formSchema>;
 
@@ -31,9 +32,11 @@ export const SignUp = () => {
         signUp({ email, password, name });
     };
 
+    const [avatarLoadingError, setAvatarLoadingError] = useState(false)
+
     return (
         <main className="flex h-full grow items-center justify-center">
-            {authError && <ErrorModal errorText={authError.message} closeModalHandler={clearAuthError} />}
+            {(authError || avatarLoadingError) && <ErrorModal errorText={authError.message} closeModalHandler={clearAuthError} />}
             <form
                 onSubmit={handleSubmit(formSubmitHandler)}
                 method="post"
@@ -44,7 +47,7 @@ export const SignUp = () => {
                     Hello there 👋! We're excited to have you back. Please use your credentials to access your account
                     and dive into our platform.
                 </p>
-                <Label className="form-label mx-auto">Avatar</Label>
+                <Label className="form-label">Avatar</Label>
                 <Avatars />
                 <Label className="form-label">
                     Username

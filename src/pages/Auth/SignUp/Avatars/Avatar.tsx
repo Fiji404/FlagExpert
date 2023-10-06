@@ -1,5 +1,3 @@
-import { twMerge } from 'tailwind-merge';
-
 interface Props {
     data: string;
     isAvatarActive: boolean;
@@ -11,12 +9,9 @@ export const Avatar = ({ data, isAvatarActive, clickAvatarHandler }: Props) => {
         <img
             src={data!}
             onClick={clickAvatarHandler}
-            className={twMerge(
-                `form-input box-content max-w-[60px] cursor-pointer rounded-full p-2 ${
-                    isAvatarActive ? 'outline-style' : ''
-                }`,
-                'rounded-full'
-            )}
+            className={`box-content max-w-[60px] cursor-pointer rounded-full border border-[#ccc] p-2 dark:border-[#222] dark:bg-[#111] ${
+                isAvatarActive ? 'outline-style dark:bg-[#222] bg-[#f0f0f0]' : ''
+            }`}
         />
     );
 };
