@@ -32,11 +32,9 @@ export const SignUp = () => {
         signUp({ email, password, name });
     };
 
-    const [avatarLoadingError, setAvatarLoadingError] = useState(false)
-
     return (
         <main className="flex h-full grow items-center justify-center">
-            {(authError || avatarLoadingError) && <ErrorModal errorText={authError.message} closeModalHandler={clearAuthError} />}
+            {authError && <ErrorModal errorText={authError.message} closeModalHandler={clearAuthError} />}
             <form
                 onSubmit={handleSubmit(formSubmitHandler)}
                 method="post"
