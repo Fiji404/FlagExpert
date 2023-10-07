@@ -7,7 +7,6 @@ import { Label } from '@radix-ui/react-label';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Avatars } from './Avatars/Avatars';
-import { useState } from 'react';
 
 type FormSchema = z.infer<typeof formSchema>;
 

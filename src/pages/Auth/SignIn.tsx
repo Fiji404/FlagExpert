@@ -70,5 +70,4 @@ export const SignIn = () => {
             </form>
         </main>
     );
-    
 };

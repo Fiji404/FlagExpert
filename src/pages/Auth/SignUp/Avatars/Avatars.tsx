@@ -32,7 +32,7 @@ export const Avatars = () => {
     }, []);
 
     return (
-        <ul className="mx-auto flex justify-center flex-wrap gap-4">
+        <ul className="mx-auto flex flex-wrap justify-center gap-4">
             {avatars.map(({ data }) => (
                 <Avatar
                     key={data}
