@@ -7,6 +7,9 @@ import { Label } from '@radix-ui/react-label';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Avatars } from './Avatars/Avatars';
+import { createPortal } from 'react-dom';
+import { SignUpConfirmationModal } from './SignUpConfirmationModal';
+import { useState } from 'react';
 
 type FormSchema = z.infer<typeof formSchema>;
 
@@ -17,23 +20,40 @@ const formSchema = z.object({
 });
 
 export const SignUp = () => {
-    const { authError, clearAuthError, signUp } = useSupabaseAuthStore();
+    const { user, session, authError, clearAuthError, signUp } = useSupabaseAuthStore();
     const {
         register,
         handleSubmit,
-        formState: { errors }
+        getValues,
+        formState: { errors, isSubmitted }
     } = useForm<FormSchema>({
         resolver: zodResolver(formSchema)
     });
+    const [isConfirmationModalClosed, setIsConfirmationModalClosed] = useState(false);
 
     const formSubmitHandler = ({ email, password, name }: FormSchema) => {
         clearAuthError();
         signUp({ email, password, name });
     };
 
+    const closeConfirmationModal = () => {
+        setIsConfirmationModalClosed(true);
+    };
+
     return (
         <main className="flex h-full grow items-center justify-center">
             {authError && <ErrorModal errorText={authError.message} closeModalHandler={clearAuthError} />}
+            {user &&
+                !session &&
+                isSubmitted &&
+                !isConfirmationModalClosed &&
+                createPortal(
+                    <SignUpConfirmationModal
+                        closeConfirmationModal={closeConfirmationModal}
+                        emailToConfirm={getValues().email}
+                    />,
+                    document.body
+                )}
             <form
                 onSubmit={handleSubmit(formSubmitHandler)}
                 method="post"
