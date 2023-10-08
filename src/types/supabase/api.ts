@@ -1,8 +1,9 @@
 export interface SupabaseRow {
-    countryFlagURL: string;
-    countryName: string;
     id: number;
+    flagURL: string;
+    flagName: string;
+    flagContinent: string;
 }
 
-export type SupabaseQueryResponse = SupabaseRow[];
-export type Query = '*' | 'id, countryName' | 'id, countryFlagURL' | 'id, countryName, countryFlagURL';
+export type FlagsQueryResponse = SupabaseRow[];
+export type Query = '*' | 'id, flagName, flagURL' | 'id, flagName, flagURL, flagContinent';

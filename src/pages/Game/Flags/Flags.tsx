@@ -1,19 +1,19 @@
 import { Flag } from './Flag';
-import { GuessedCountries } from '../Game';
+import { GuessedFlags } from '../Game';
 
 interface Props {
-    countries: GuessedCountries[];
+    guessedFlags: GuessedFlags[];
 }
 
-export const Flags = ({ countries }: Props) => {
+export const Flags = ({ guessedFlags }: Props) => {
     return (
         <ul className="flex flex-wrap justify-center gap-5 overflow-auto px-3 pb-4 pt-5 ">
-            {countries.map(country => (
+            {guessedFlags.map(flag => (
                 <Flag
-                    key={country.id}
-                    countryName={country.countryName}
-                    countryFlagURL={country.countryFlagURL}
-                    isCountryGuessed={country.isCountryGuessed}
+                    key={flag.id}
+                    flagName={flag.flagName}
+                    flagURL={flag.flagURL}
+                    isFlagGuessed={flag.isFlagGuessed}
                 />
             ))}
         </ul>

@@ -2,22 +2,22 @@ import { memo, useEffect, useRef, useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { BiError } from 'react-icons/bi';
-import { GuessedCountries } from '../Game';
+import { GuessedFlags } from '../Game';
 import { motion } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
 
-type Props = Omit<GuessedCountries, 'id'>;
+type Props = Omit<GuessedFlags, 'id' | 'flagContinent'>;
 
-export const Flag = memo(({ countryName, countryFlagURL, isCountryGuessed }: Props) => {
+export const Flag = memo(({ flagName, flagURL, isFlagGuessed }: Props) => {
     const [isFlagLoading, setIsFlagLoading] = useState(true);
     const [isFlagError, setIsFlagError] = useState(false);
     const flagElementRef = useRef<HTMLLIElement>(null);
 
     useEffect(() => {
-        if (isCountryGuessed && flagElementRef.current) {
+        if (isFlagGuessed && flagElementRef.current) {
             flagElementRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-    }, [isCountryGuessed]);
+    }, [isFlagGuessed]);
 
     const loadErrorCountryFlagHandler = () => {
         setIsFlagError(true);
@@ -32,7 +32,7 @@ export const Flag = memo(({ countryName, countryFlagURL, isCountryGuessed }: Pro
             <motion.li
                 ref={flagElementRef}
                 whileInView={
-                    isCountryGuessed
+                    isFlagGuessed
                         ? {
                               translateY: [-8, 0],
                               rotateY: [180, 0]
@@ -43,7 +43,7 @@ export const Flag = memo(({ countryName, countryFlagURL, isCountryGuessed }: Pro
                 className={twMerge(
                     `box-content flex aspect-video min-w-[50px] max-w-[120px] grow  flex-col items-center justify-center rounded-md border border-[#dfdfdf] bg-[#f8f8f8] px-3 py-2 dark:border-[#2a2c30] dark:bg-[#161616] ${
                         isFlagLoading && !isFlagError ? 'hidden' : 'flex'
-                    } ${isCountryGuessed ? 'bg-[#ddf3e4] dark:bg-[#152a27]' : ''}`
+                    } ${isFlagGuessed ? 'bg-[#ddf3e4] dark:bg-[#152a27]' : ''}`
                 )}
                 transition={{ duration: 1.1, type: 'spring' }}
             >
@@ -54,12 +54,12 @@ export const Flag = memo(({ countryName, countryFlagURL, isCountryGuessed }: Pro
                         onError={loadErrorCountryFlagHandler}
                         onLoad={loadedCountryFlagHandler}
                         className="aspect-video w-full"
-                        src={countryFlagURL}
-                        alt={countryName}
+                        src={flagURL}
+                        alt={flagName}
                     />
                 )}
-                {isCountryGuessed && (
-                    <p className="mt-2 text-center font-semibold text-[#214134] dark:text-[#3CDA8E]">{countryName}</p>
+                {isFlagGuessed && (
+                    <p className="mt-2 text-center font-semibold text-[#214134] dark:text-[#3CDA8E]">{flagName}</p>
                 )}
             </motion.li>
         </>
