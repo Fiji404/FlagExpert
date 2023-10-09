@@ -61,6 +61,13 @@
         @apply mt-1 min-h-[40px] grow rounded-md border border-[#ccc] px-2 text-black dark:border-[#222] dark:bg-[#111] dark:text-white;
     }
     .modal-shadow {
+        box-shadow:
+            0 0 0 1px #0000330f,
+            0 12px 60px rgba(0, 0, 0, 0.15),
+            0 16px 64px #00005506,
+            0 16px 36px -20px #00062e32;
+    }
+    .modal-shadow-dark {
         box-shadow: 0 0 0 1px color-mix(in oklab, #f1e6fd30, #3c393f);
     }
 }
