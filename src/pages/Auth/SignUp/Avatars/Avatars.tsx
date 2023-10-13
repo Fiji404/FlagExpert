@@ -4,29 +4,37 @@ import { Avatar } from './Avatar';
 
 interface Avatar {
     data: string | null;
-    error: Error | null;
 }
 
-export const Avatars = () => {
+interface Props {
+    saveActiveAvatarURL(avatarURL: string): void;
+}
+
+export const Avatars = ({ saveActiveAvatarURL }: Props) => {
     const [avatars, setAvatars] = useState<Avatar[]>([]);
     const [activeAvatar, setActiveAvatar] = useState('');
 
-    const pickAvatarHandler = (avatarName: string) => {
-        setActiveAvatar(avatarName);
+    const pickAvatarHandler = (avatarURL: string) => {
+        saveActiveAvatarURL(avatarURL);
+        setActiveAvatar(avatarURL);
     };
+
+    // const pickAvatarHandler = (avatarName: string) => {
+    //     setActiveAvatar(avatarName);
+    // };
 
     useEffect(() => {
         const getUserAvatars = async () => {
             const { data: avatarsDetails } = await supabase.storage.from('avatars').list();
             const avatarsNames = avatarsDetails?.map(file => file.name);
             const avatars = await Promise.all(
-                avatarsNames!.map(async fileName => await supabase.storage.from('avatars').download(fileName))
+                avatarsNames!.map(async fileName => supabase.storage.from('avatars').getPublicUrl(fileName))
             );
-            const avatarsWithObjectUrl = avatars.map(avatar => ({
+            const avatarsWithUrls = avatars.map(avatar => ({
                 ...avatar,
-                data: URL.createObjectURL(avatar.data!)
+                data: avatar.data.publicUrl
             }));
-            setAvatars(avatarsWithObjectUrl);
+            setAvatars(avatarsWithUrls);
         };
         getUserAvatars();
     }, []);

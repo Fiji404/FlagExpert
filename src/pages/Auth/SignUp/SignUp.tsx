@@ -30,15 +30,20 @@ export const SignUp = () => {
         resolver: zodResolver(formSchema)
     });
     const [isConfirmationModalClosed, setIsConfirmationModalClosed] = useState(false);
+    const [activeAvatarURL, setActiveAvatarURL] = useState('');
 
     const formSubmitHandler = ({ email, password, name }: FormSchema) => {
         clearAuthError();
-        signUp({ email, password, name });
+        signUp({ email, password, name, avatarURL: activeAvatarURL });
     };
 
     const closeConfirmationModal = () => {
         setIsConfirmationModalClosed(true);
     };
+
+    const saveActiveAvatarURL = (avatarURL: string) => {
+        setActiveAvatarURL(avatarURL)
+    }
 
     return (
         <main className="flex h-full grow items-center justify-center">
@@ -65,7 +70,7 @@ export const SignUp = () => {
                     and dive into our platform.
                 </p>
                 <Label className="form-label">Avatar</Label>
-                <Avatars />
+                <Avatars saveActiveAvatarURL={saveActiveAvatarURL} />
                 <Label className="form-label">
                     Username
                     <input className="form-input" {...register('name')} />

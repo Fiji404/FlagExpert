@@ -9,7 +9,7 @@ interface UserCredentials {
 
 interface PersonDetails extends UserCredentials {
     name: string;
-    lastName?: string;
+    avatarURL: string;
 }
 
 interface AuthStore {
@@ -46,7 +46,7 @@ export const useSupabaseAuthStore = create<AuthStore>(set => ({
         if (authError) return set({ authError });
         set({ user, session });
     },
-    async signUp({ email, password, name, lastName }) {
+    async signUp({ email, password, name, avatarURL }) {
         const {
             data: { user, session },
             error
@@ -56,9 +56,9 @@ export const useSupabaseAuthStore = create<AuthStore>(set => ({
             options: {
                 data: {
                     name,
-                    lastName: lastName ?? ''
+                    avatar_url: avatarURL
                 },
-                emailRedirectTo: '/dashboard'
+                // emailRedirectTo: '/dashboard'
             }
         });
         if (error) return set({ authError: error });
