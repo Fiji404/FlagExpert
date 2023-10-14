@@ -1,25 +1,25 @@
 import { create } from 'zustand';
 import { supabase } from '@/supabase';
-import { User, Session, AuthError } from '@supabase/supabase-js';
+import { User as IUser, Session, AuthError } from '@supabase/supabase-js';
 
-interface UserCredentials {
+interface Credentials {
     email: string;
     password: string;
 }
 
-interface PersonDetails extends UserCredentials {
-    name: string;
+interface User extends Credentials {
+    username: string;
     avatarURL: string;
 }
 
 interface AuthStore {
-    user: User | null;
+    user: IUser | null;
     session: Session | null;
     authError: AuthError | null;
     clearAuthError(): void;
     getSession(): void;
-    signIn(credentials: UserCredentials): void;
-    signUp(credentials: PersonDetails): void;
+    signIn(credentials: Credentials): void;
+    signUp(user: User): void;
     signOut(): void;
 }
 
@@ -27,15 +27,13 @@ export const useSupabaseAuthStore = create<AuthStore>(set => ({
     user: null,
     session: null,
     authError: null,
-    clearAuthError() {
-        set({ authError: null });
-    },
+    clearAuthError: () => set({ authError: null }),
     async getSession() {
         const {
             data: { session },
             error: errorSession
         } = await supabase.auth.getSession();
-        if (errorSession) set({ authError: errorSession });
+        if (errorSession) return set({ authError: errorSession });
         set({ session });
     },
     async signIn({ email, password }) {
@@ -46,22 +44,21 @@ export const useSupabaseAuthStore = create<AuthStore>(set => ({
         if (authError) return set({ authError });
         set({ user, session });
     },
-    async signUp({ email, password, name, avatarURL }) {
+    async signUp({ email, password, username, avatarURL }) {
         const {
             data: { user, session },
-            error
+            error: authError
         } = await supabase.auth.signUp({
             email,
             password,
             options: {
                 data: {
-                    name,
+                    username,
                     avatar_url: avatarURL
-                },
-                // emailRedirectTo: '/dashboard'
+                }
             }
         });
-        if (error) return set({ authError: error });
+        if (authError) return set({ authError });
         set({ user, session });
     },
     async signOut() {

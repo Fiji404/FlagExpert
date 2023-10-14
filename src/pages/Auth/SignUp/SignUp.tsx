@@ -14,7 +14,7 @@ import { useState } from 'react';
 type FormSchema = z.infer<typeof formSchema>;
 
 const formSchema = z.object({
-    name: z.string().min(1, { message: 'This field is required' }),
+    username: z.string().min(1, { message: 'This field is required' }),
     email: z.string().email(),
     password: z.string().min(8, { message: 'Password must contain at least 8 character(s)' })
 });
@@ -32,9 +32,9 @@ export const SignUp = () => {
     const [isConfirmationModalClosed, setIsConfirmationModalClosed] = useState(false);
     const [activeAvatarURL, setActiveAvatarURL] = useState('');
 
-    const formSubmitHandler = ({ email, password, name }: FormSchema) => {
+    const formSubmitHandler = ({ email, password, username }: FormSchema) => {
         clearAuthError();
-        signUp({ email, password, name, avatarURL: activeAvatarURL });
+        signUp({ email, password, username, avatarURL: activeAvatarURL });
     };
 
     const closeConfirmationModal = () => {
@@ -42,8 +42,8 @@ export const SignUp = () => {
     };
 
     const saveActiveAvatarURL = (avatarURL: string) => {
-        setActiveAvatarURL(avatarURL)
-    }
+        setActiveAvatarURL(avatarURL);
+    };
 
     return (
         <main className="flex h-full grow items-center justify-center">
@@ -73,9 +73,9 @@ export const SignUp = () => {
                 <Avatars saveActiveAvatarURL={saveActiveAvatarURL} />
                 <Label className="form-label">
                     Username
-                    <input className="form-input" {...register('name')} />
+                    <input className="form-input" {...register('username')} />
                 </Label>
-                {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
+                {errors.username && <ErrorMessage>{errors.username.message}</ErrorMessage>}
                 <Label className="form-label">
                     E-mail
                     <input className="form-input" {...register('email')} />
