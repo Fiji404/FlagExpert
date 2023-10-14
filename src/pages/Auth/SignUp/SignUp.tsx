@@ -70,7 +70,7 @@ export const SignUp = () => {
                     and dive into our platform.
                 </p>
                 <Label className="form-label">Avatar</Label>
-                <Avatars saveActiveAvatarURL={saveActiveAvatarURL} />
+                <Avatars activeAvatarURL={activeAvatarURL} saveActiveAvatarURL={saveActiveAvatarURL} />
                 <Label className="form-label">
                     Username
                     <input className="form-input" {...register('username')} />
