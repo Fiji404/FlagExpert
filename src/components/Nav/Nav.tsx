@@ -2,8 +2,9 @@ import { Logo, ToggleThemeBtn } from './';
 import { useEffect, useState } from 'react';
 import { HamburgerBtn } from './HamburgerBtn';
 import { NavList } from './NavList';
-import { useSupabaseAuthStore } from '@/store/supabaseAuthStore';
+import { useSupabaseAuthStore } from '@/store';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { LangBtn } from './LangBtn';
 
 export const Nav = () => {
     const [isNavExpanded, setIsNavExpanded] = useState(false);
@@ -29,6 +30,7 @@ export const Nav = () => {
                 <Logo />
                 <NavList session={session} className="hidden sm:flex" />
                 <ul className="flex items-center gap-2">
+                    <LangBtn />
                     <HamburgerBtn onClick={toggleNavHandler} />
                     <ToggleThemeBtn />
                 </ul>

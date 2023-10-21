@@ -10,6 +10,7 @@ import * as z from 'zod';
 import { Link } from '@/components/UI/Link';
 import { Button } from '@/components/UI/Button';
 import { OAuthProviders } from './OAuthProviders';
+import { useTranslation } from 'react-i18next';
 
 type FormSchema = z.infer<typeof formSchema>;
 
@@ -21,6 +22,7 @@ const formSchema = z.object({
 export const SignIn = () => {
     const navigate = useNavigate();
     const { user, authError, clearAuthError, signIn } = useSupabaseAuthStore();
+    const { t } = useTranslation();
     const {
         register,
         handleSubmit,
@@ -46,10 +48,11 @@ export const SignIn = () => {
                 method="post"
                 className="flex w-full max-w-[600px] flex-col gap-2 rounded-md border border-[#f1f1f1] bg-[rgb(253,253,253)] px-4 py-6 dark:border-[#202020] dark:bg-[#111]"
             >
-                <h2 className="text-center text-4xl font-bold text-black dark:text-white">Sign in</h2>
+                <h2 className="text-center text-4xl font-bold text-black dark:text-white">{t('Sign in')}</h2>
                 <p className="mb-2 text-center text-lg text-[#494949] dark:text-[#969696]">
-                    Hello there 👋! We're excited to have you back. Please use your credentials to access your account
-                    and dive into our platform.
+                    {t(
+                        "Hello there 👋! We're excited to have you back. Please use your credentials to access your account and dive into our platform."
+                    )}
                 </p>
                 <Label className="form-label">
                     E-mail
@@ -57,13 +60,13 @@ export const SignIn = () => {
                 </Label>
                 {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
                 <Label className="form-label">
-                    Password
+                    {t("Password")}
                     <input className="form-input" type="text" {...register('password')} />
                 </Label>
                 {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
                 <div className="mt-6 flex justify-between">
-                    <Link to="/auth/signup">Create account</Link>
-                    <Button color="green">Sign in</Button>
+                    <Link to="/auth/signup">{t("Create account")}</Link>
+                    <Button color="green">{t("Sign in")}</Button>
                 </div>
                 <div aria-hidden="true" className="mt-4 h-[2px] w-full rounded-full bg-[#eee] dark:bg-[#222222]" />
                 <OAuthProviders />

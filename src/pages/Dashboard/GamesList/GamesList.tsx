@@ -27,7 +27,7 @@ const AVAILABLE_GAMES = [
     },
     {
         name: 'Flags by continent',
-        desc: ' Choose a continent and engage in a targeted flag guessing adventure.Test your flag recognition skills by focusing on a single continent and become a specialist in identifying its flags. This mode offers an enriching exploration of regional diversity and flag symbolism.',
+        desc: 'Choose a continent and engage in a targeted flag guessing adventure. Test your flag recognition skills by focusing on a single continent and become a specialist in identifying its flags. This mode offers an enriching exploration of regional diversity and flag symbolism.',
         icon: <FaMapMarkedAlt />,
         status: 'in-progress',
         route: ''
