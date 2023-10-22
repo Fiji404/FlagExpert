@@ -3,6 +3,7 @@ import { Link } from '../UI/Link';
 import { AccountItem } from './AccountItem/AccountItem';
 import { Session } from '@supabase/supabase-js';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 
 interface Props {
     className: string;
@@ -12,7 +13,12 @@ interface Props {
 export const NavList = ({ session, className }: Props) => {
     const { t } = useTranslation();
     return (
-        <ul className={twMerge('ml-auto mr-4 items-center gap-2', className)}>
+        <motion.ul
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className={twMerge('ml-auto mr-4 origin-top items-center gap-2', className)}
+        >
             <li className="grow">
                 <Link to="/">{t('Home')}</Link>
             </li>
@@ -22,6 +28,6 @@ export const NavList = ({ session, className }: Props) => {
             <li className="relative grow">
                 {session ? <AccountItem user={session.user} /> : <Link to="/auth/signin">{t('Sign in')}</Link>}
             </li>
-        </ul>
+        </motion.ul>
     );
 };

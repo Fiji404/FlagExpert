@@ -5,6 +5,7 @@ import { NavList } from './NavList';
 import { useSupabaseAuthStore } from '@/store';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { LangBtn } from './LangBtn';
+import { AnimatePresence } from 'framer-motion';
 
 export const Nav = () => {
     const [isNavExpanded, setIsNavExpanded] = useState(false);
@@ -19,6 +20,10 @@ export const Nav = () => {
     useEffect(() => {
         if (location.pathname.includes('/auth') && session?.user) navigate('/dashboard');
     }, [location, session, navigate]);
+
+    useEffect(() => {
+        setIsNavExpanded(false);
+    }, [location]);
 
     const toggleNavHandler = () => {
         setIsNavExpanded(isExpanded => !isExpanded);
@@ -35,7 +40,15 @@ export const Nav = () => {
                     <ToggleThemeBtn />
                 </ul>
             </div>
-            {isNavExpanded && <NavList session={session} className="ml-0 mr-0 mt-4 flex justify-between sm:hidden" />}
+            <AnimatePresence>
+                {isNavExpanded && (
+                    <NavList
+                        key="nav-list"
+                        session={session}
+                        className="ml-0 mr-0 mt-4 flex justify-between sm:hidden"
+                    />
+                )}
+            </AnimatePresence>
         </nav>
     );
 };

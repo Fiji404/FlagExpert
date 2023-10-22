@@ -5,6 +5,7 @@ import i18next from 'i18next';
 import { LangDetails, LangOption } from './LangOption';
 import usaIcon from '@/assets/icons/usa.svg';
 import plIcon from '@/assets/icons/pl.svg';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export type SiteLang = 'en' | 'pl';
 
@@ -12,6 +13,8 @@ const LANGUAGES = [
     { lang: 'en', iconPath: usaIcon, iconAlt: 'USA flag' },
     { lang: 'pl', iconPath: plIcon, iconAlt: 'Poland flag' }
 ] as LangDetails[];
+
+const initialUlStyles = { scaleY: 0, opacity: 0 };
 
 export const LangBtn = () => {
     const [isLangOptionsActive, setIsLangOptionsActive] = useState(false);
@@ -44,13 +47,21 @@ export const LangBtn = () => {
             <Button onClick={langBtnClickHandler} color="default">
                 <IoLanguage className="text-2xl dark:text-white" />
             </Button>
-            {isLangOptionsActive && (
-                <ul className="absolute -bottom-2 right-0 flex w-max translate-y-full flex-col overflow-hidden rounded-md border border-[#e9e9e9] bg-[#fafafa] dark:border-[#3b3b3b] dark:bg-[#1d1d1d]">
-                    {LANGUAGES.map(lang => (
-                        <LangOption key={lang.lang} {...lang} chooseLangHandler={chooseLangHandler} />
-                    ))}
-                </ul>
-            )}
+            <AnimatePresence>
+                {isLangOptionsActive && (
+                    <motion.ul
+                        key="list"
+                        initial={{ ...initialUlStyles, translateY: '100%' }}
+                        animate={{ scaleY: 1, opacity: 1 }}
+                        exit={initialUlStyles}
+                        className="absolute -bottom-2 right-0 flex w-max origin-top flex-col overflow-hidden rounded-md border border-[#e9e9e9] bg-[#fafafa] dark:border-[#3b3b3b]  dark:bg-[#1d1d1d]"
+                    >
+                        {LANGUAGES.map(lang => (
+                            <LangOption key={lang.lang} {...lang} chooseLangHandler={chooseLangHandler} />
+                        ))}
+                    </motion.ul>
+                )}
+            </AnimatePresence>
         </li>
     );
 };

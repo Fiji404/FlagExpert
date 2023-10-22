@@ -11,6 +11,7 @@ import { Link } from '@/components/UI/Link';
 import { Button } from '@/components/UI/Button';
 import { OAuthProviders } from './OAuthProviders';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 
 type FormSchema = z.infer<typeof formSchema>;
 
@@ -18,6 +19,12 @@ const formSchema = z.object({
     email: z.string().email(),
     password: z.string().min(8, { message: 'Password must contain at least 8 character(s)' })
 });
+
+export const framerFormAnimation = {
+    initial: { scale: 0.9, opacity: 0 },
+    animate: { scale: 1, opacity: 1 },
+    transition: { duration: 0.3 }
+};
 
 export const SignIn = () => {
     const navigate = useNavigate();
@@ -43,10 +50,11 @@ export const SignIn = () => {
     return (
         <main className="flex h-full grow items-center justify-center">
             {authError && <ErrorModal errorText={authError.message} closeModalHandler={clearAuthError} />}
-            <form
+            <motion.form
+                {...framerFormAnimation}
                 onSubmit={handleSubmit(formSubmitHandler)}
                 method="post"
-                className="flex w-full max-w-[600px] flex-col gap-2 rounded-md border border-[#f1f1f1] bg-[rgb(253,253,253)] px-4 py-6 dark:border-[#202020] dark:bg-[#111]"
+                className="mx-3 flex w-full max-w-[600px] flex-col gap-2 rounded-md border border-[#f1f1f1] bg-[rgb(253,253,253)] px-4 py-6 dark:border-[#202020] dark:bg-[#111]"
             >
                 <h2 className="text-center text-4xl font-bold text-black dark:text-white">{t('Sign in')}</h2>
                 <p className="mb-2 text-center text-lg text-[#494949] dark:text-[#969696]">
@@ -70,7 +78,7 @@ export const SignIn = () => {
                 </div>
                 <div aria-hidden="true" className="mt-4 h-[2px] w-full rounded-full bg-[#eee] dark:bg-[#222222]" />
                 <OAuthProviders />
-            </form>
+            </motion.form>
         </main>
     );
 };

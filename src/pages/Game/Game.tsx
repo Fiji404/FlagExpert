@@ -3,7 +3,7 @@ import { Flags } from './Flags/Flags';
 import { useSupabaseFlagsStore } from '@/store/supabaseFlagsStore';
 import { SupabaseRow } from '@/types/supabase/api';
 import { useEffect, useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export interface GuessedFlags extends SupabaseRow {
     isFlagGuessed: boolean;
@@ -48,10 +48,15 @@ export const Game = () => {
             <AnimatePresence>
                 {error && <ErrorModal key="error-modal" closeModalHandler={clearError} errorText={error.message} />}
             </AnimatePresence>
-            <div className="sticky top-0 flex items-center gap-2 border-b border-[#f0f0f0] bg-[#fff] px-3 pb-3 pt-3 shadow-md dark:border-[rgb(27,27,27)] dark:bg-primaryDark dark:shadow-[#141414]">
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="sticky top-0 flex items-center gap-2 border-b border-[#f0f0f0] bg-[#fff] px-3 pb-3 pt-3 shadow-md dark:border-[rgb(27,27,27)] dark:bg-primaryDark dark:shadow-[#141414]"
+            >
                 <SearchInput isCountryGuessed={isFlagGuessed} validateCountryFlagName={validateCountryFlagName} />
                 <Counter from={guessedFlagsAmount} to={guessedFlags.length} />
-            </div>
+            </motion.div>
             {isDataLoading ? <LoadingSpinner /> : <Flags guessedFlags={guessedFlags} />}
         </div>
     );

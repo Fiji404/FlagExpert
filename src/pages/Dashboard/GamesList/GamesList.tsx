@@ -36,10 +36,12 @@ const AVAILABLE_GAMES = [
 
 export const GamesList = () => {
     return (
-        <div className="mt-10 flex flex-wrap gap-4">
-            {AVAILABLE_GAMES.map(game => (
-                <GameItem key={game.name} {...game} />
-            ))}
+        <div className="mt-10">
+            <ul className="flex flex-wrap justify-center gap-4">
+                {AVAILABLE_GAMES.map((game, i) => (
+                    <GameItem key={game.name} {...game} i={i} />
+                ))}
+            </ul>
         </div>
     );
 };

@@ -28,9 +28,11 @@ export const Flag = memo(({ flagName, flagURL, isFlagGuessed }: Props) => {
     };
     return (
         <>
-            {isFlagLoading && !isFlagError && <Skeleton count={1} className="min-h-[80px] min-w-[100px]" />}
+            {isFlagLoading && !isFlagError && <Skeleton count={1} className="min-h-[100px] min-w-[150px]" />}
             <motion.li
                 ref={flagElementRef}
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={!isFlagLoading && { scale: 1, opacity: 1 }}
                 whileInView={
                     isFlagGuessed
                         ? {
@@ -41,7 +43,7 @@ export const Flag = memo(({ flagName, flagURL, isFlagGuessed }: Props) => {
                 }
                 viewport={{ once: true }}
                 className={twMerge(
-                    `box-content flex aspect-video min-w-[50px] max-w-[120px] grow  flex-col items-center justify-center rounded-md border border-[#dfdfdf] bg-[#f8f8f8] px-3 py-2 dark:border-[#2a2c30] dark:bg-[#161616] ${
+                    `flex w-full max-w-[300px] grow basis-40 flex-col items-center justify-center rounded-md border border-[#dfdfdf] bg-[#f8f8f8] px-3 py-2 dark:border-[#2a2c30] dark:bg-[#161616] ${
                         isFlagLoading && !isFlagError ? 'hidden' : 'flex'
                     } ${isFlagGuessed ? 'bg-[#ddf3e4] dark:bg-[#152a27]' : ''}`
                 )}

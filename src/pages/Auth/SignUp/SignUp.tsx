@@ -11,6 +11,8 @@ import { createPortal } from 'react-dom';
 import { SignUpConfirmationModal } from './SignUpConfirmationModal';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
+import { framerFormAnimation } from '../SignIn';
 
 type FormSchema = z.infer<typeof formSchema>;
 
@@ -60,10 +62,11 @@ export const SignUp = () => {
                     />,
                     document.body
                 )}
-            <form
+            <motion.form
+                {...framerFormAnimation}
                 onSubmit={handleSubmit(formSubmitHandler)}
                 method="post"
-                className="flex w-full max-w-[600px] flex-col gap-2 rounded-md border border-[#f1f1f1] bg-[rgb(253,253,253)] px-4 py-6 dark:border-[#313131] dark:bg-[#111]"
+                className="mx-3 flex w-full max-w-[600px] flex-col gap-2 rounded-md border border-[#f1f1f1] bg-[rgb(253,253,253)] px-4 py-6 dark:border-[#313131] dark:bg-[#111]"
             >
                 <h2 className="text-center text-4xl font-bold text-black dark:text-white">{t('Sign up')}</h2>
                 <p className="mb-2 text-center text-lg text-[#494949] dark:text-[#969696]">
@@ -91,7 +94,7 @@ export const SignUp = () => {
                 <Button color="green" className="mt-6">
                     {t('Sign up')}
                 </Button>
-            </form>
+            </motion.form>
         </main>
     );
 };

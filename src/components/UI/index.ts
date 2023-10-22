@@ -4,3 +4,4 @@ export { LoadingSpinner } from './LoadingSpinner';
 export { Counter } from './Counter';
 export { Tooltip } from './Tooltip';
 export { Backdrop } from './Backdrop';
+export { Heading } from './Heading';

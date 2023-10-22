@@ -7,7 +7,7 @@ interface Props {
 
 export const Flags = ({ guessedFlags }: Props) => {
     return (
-        <ul className="flex flex-wrap justify-center gap-5 overflow-auto px-3 pb-4 pt-5 ">
+        <ul className="flex flex-wrap justify-center gap-4 overflow-auto px-3 pb-4 pt-5">
             {guessedFlags.map(flag => (
                 <Flag
                     key={flag.id}
