@@ -1,13 +1,15 @@
 import * as RadixTooltip from '@radix-ui/react-tooltip';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
     children?: React.ReactNode;
-    tooltipContent: React.ReactNode;
+    tooltipContent: string;
     delay: number;
 }
 
 export const Tooltip = ({ children, tooltipContent, delay }: Props) => {
+    const { t } = useTranslation();
     return (
         <RadixTooltip.Provider delayDuration={delay}>
             <RadixTooltip.Root>
@@ -19,7 +21,7 @@ export const Tooltip = ({ children, tooltipContent, delay }: Props) => {
                         asChild
                     >
                         <motion.div initial={{ opacity: 0, translateY: '2px' }} animate={{ opacity: 1, translateY: 0 }}>
-                            {tooltipContent}
+                            {t(tooltipContent)}
                             <RadixTooltip.Arrow className="z-10 fill-[#f3f3f3] dark:fill-[#222222]" />
                         </motion.div>
                     </RadixTooltip.Content>

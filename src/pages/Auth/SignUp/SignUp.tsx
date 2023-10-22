@@ -46,7 +46,6 @@ export const SignUp = () => {
     const saveActiveAvatarURL = (avatarURL: string) => {
         setActiveAvatarURL(avatarURL);
     };
-
     return (
         <main className="flex h-full grow items-center justify-center">
             {authError && <ErrorModal errorText={authError.message} closeModalHandler={clearAuthError} />}
@@ -69,7 +68,7 @@ export const SignUp = () => {
                 <h2 className="text-center text-4xl font-bold text-black dark:text-white">{t('Sign up')}</h2>
                 <p className="mb-2 text-center text-lg text-[#494949] dark:text-[#969696]">
                     {t(
-                        "Hello there 👋! We're excited to have you back. Please use your credentials to access your account and dive into our platform."
+                        "Hello 👋 and welcome to our community! We're excited to have you on board. Please take a moment to fill out the registration form below to get started. Your presence means a lot to us."
                     )}
                 </p>
                 <Label className="form-label">{t('Avatar')}</Label>

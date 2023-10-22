@@ -1,5 +1,6 @@
 import { debounce } from '@/utils/debounce';
 import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { BiSearch } from 'react-icons/bi';
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
 
 export const SearchInput = ({ validateCountryFlagName, isCountryGuessed }: Props) => {
     const inputSearchRef = useRef<HTMLInputElement>(null);
+    const { t } = useTranslation();
 
     const clearInputValue = () => {
         if (!inputSearchRef.current) return;
@@ -32,7 +34,7 @@ export const SearchInput = ({ validateCountryFlagName, isCountryGuessed }: Props
                 ref={inputSearchRef}
                 onChange={debounce(inputChangeHandler, 250)}
                 className="min-h-[40px] grow rounded-md bg-inherit text-black focus:outline-none dark:text-white"
-                placeholder="Type your flag here"
+                placeholder={t('Type your flag here')}
                 type="text"
             />
         </div>

@@ -1,5 +1,6 @@
 import { Backdrop } from '@/components';
 import { supabase } from '@/supabase';
+import { Trans, useTranslation } from 'react-i18next';
 import { IoIosMail, IoMdClose } from 'react-icons/io';
 
 interface Props {
@@ -8,6 +9,7 @@ interface Props {
 }
 
 export const SignUpConfirmationModal = ({ closeConfirmationModal, emailToConfirm }: Props) => {
+    const { t } = useTranslation();
     const resendEmailConfirmation = () => {
         supabase.auth.resend({
             type: 'signup',
@@ -25,19 +27,23 @@ export const SignUpConfirmationModal = ({ closeConfirmationModal, emailToConfirm
                 >
                     <IoMdClose className=" text-3xl text-black dark:text-white" />
                 </button>
-                <IoIosMail className="mx-auto text-9xl dark:text-[#5ce96f] text-[#4dd15f]" />
+                <IoIosMail className="mx-auto text-9xl text-[#4dd15f] dark:text-[#5ce96f]" />
                 <h2 className="text-center text-4xl font-semibold text-[#000000] dark:text-white">
-                    Email confirmation
+                    {t('Email confirmation')}
                 </h2>
                 <p className="mt-4 text-center text-[#4b4b4b] dark:text-[#ccc]">
-                    We have sent email to <span className="dark:text-[#5ce96f] text-[#4dd15f]">{emailToConfirm}</span> {false} to confirm
-                    the validity of your email address. After recieving the email follow the link provided to complete
-                    registration
+                    <Trans
+                        i18nKey="emailConfirmMsg"
+                        values={{ emailToConfirm }}
+                        components={{ 1: <span className="text-[#4dd15f] dark:text-[#5ce96f]" /> }}
+                    >
+                        {`We have sent email to <1>{{emailToConfirm}}</1> to confirm the validity of your email address. After recieving the email follow the link provided to complete registration`}
+                    </Trans>
                 </p>
-                <p className="mt-5 border-t dark:border-[#3b3b3b] border-[#cfcfcf] pt-3 text-center dark:text-[#ccc] text-[#4b4b4b]">
-                    If you not get any confirmation email{' '}
+                <p className="mt-5 border-t border-[#cfcfcf] pt-3 text-center text-[#4b4b4b] dark:border-[#3b3b3b] dark:text-[#ccc]">
+                    {t('If you not get any confirmation email')}{' '}
                     <button onClick={resendEmailConfirmation} className="text-[#1276E2] hover:underline">
-                        Resend confirmation email
+                        {t('Resend confirmation email')}
                     </button>
                 </p>
             </div>

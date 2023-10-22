@@ -10,7 +10,6 @@ i18n.use(LanguageDetector)
         detection: {
             order: ['localStorage', 'navigator']
         },
-        debug: true,
         resources
     });
 

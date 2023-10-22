@@ -1,37 +1,4 @@
 {
-    "en": {
-        "translation": {
-            "Welcome to Flaggy": "Welcome to Flaggy",
-            "Flaggy enables users to guess flags by their images. By recognizing shapes, colors, and symbols on the flags, users can identify the corresponding countries. The app offers varying levels of difficulty and features to enhance the overall flag-guessing experience.": "Flaggy enables users to guess flags by their images. By recognizing shapes, colors, and symbols on the flags, users can identify the corresponding countries. The app offers varying levels of difficulty and features to enhance the overall flag-guessing experience.",
-            "Education": "Education",
-            "Flag-based games can serve as excellent educational tools, particularly for learning geography and gaining knowledge about different countries' cultures. Players are required to recognize and identify flags from various nations, expanding their understanding of the world and aiding in the memorization of different national symbols.": "Flag-based games can serve as excellent educational tools, particularly for learning geography and gaining knowledge about different countries' cultures. Players are required to recognize and identify flags from various nations, expanding their understanding of the world and aiding in the memorization of different national symbols.",
-            "Fun and entertainment": "Fun and entertainment",
-            "Flag-based games are primarily a source of entertainment. They can provide a great deal of joy and excitement, especially when they include various game modes, challenges, and rewards. They can serve as an excellent form of relaxation and leisure while allowing players to expand their knowledge of flags and derive pleasure from recognizing them.": "Flag-based games are primarily a source of entertainment. They can provide a great deal of joy and excitement, especially when they include various game modes, challenges, and rewards. They can serve as an excellent form of relaxation and leisure while allowing players to expand their knowledge of flags and derive pleasure from recognizing them.",
-            "Improved concentration": "Improved concentration",
-            "Flag-based games can significantly enhance concentration skills. When playing these games, players must pay close attention to the details of flags, such as colors, patterns, and symbols, in order to correctly identify them. This level of focus and concentration trains the mind to stay attentive and increases the ability to sustain attention for longer periods.": "Flag-based games can significantly enhance concentration skills. When playing these games, players must pay close attention to the details of flags, such as colors, patterns, and symbols, in order to correctly identify them. This level of focus and concentration trains the mind to stay attentive and increases the ability to sustain attention for longer periods.",
-            "Home": "Home",
-            "Dashboard": "Dashboard",
-            "Sign in": "Sign in",
-            "All flags": "All flags",
-            "In this captivating game mode, embark on a journey to recognize all the flags. Your goal is to identify flags from around the world, spanning diverse cultures and histories. Challenge yourself to master every emblem and become an expert in flag recognition from across the globe.": "In this captivating game mode, embark on a journey to recognize all the flags. Your goal is to identify flags from around the world, spanning diverse cultures and histories. Challenge yourself to master every emblem and become an expert in flag recognition from across the globe.",
-            "Time challenge": "Time challenge",
-            "Test your speed and accuracy in the 'Timed Flag Challenge' mode. With the clock ticking, identify as many flags as you can before time runs out. Sharpen your flag knowledge while feeling the rush of beating the countdown!": "Test your speed and accuracy in the 'Timed Flag Challenge' mode. With the clock ticking, identify as many flags as you can before time runs out. Sharpen your flag knowledge while feeling the rush of beating the countdown!",
-            "Random flag": "Random flag",
-            "Test your flag knowledge by identifying a series of randomly displayed flags from around the world. With each flag being a surprise, challenge yourself to decode the symbolism and origin behind them. Sharpen your intuition and broaden your global flag expertise in this thrilling and spontaneous adventure.": "Test your flag knowledge by identifying a series of randomly displayed flags from around the world. With each flag being a surprise, challenge yourself to decode the symbolism and origin behind them. Sharpen your intuition and broaden your global flag expertise in this thrilling and spontaneous adventure.",
-            "Flags by continent": "Flags by continent",
-            "Choose a continent and engage in a targeted flag guessing adventure. Test your flag recognition skills by focusing on a single continent and become a specialist in identifying its flags. This mode offers an enriching exploration of regional diversity and flag symbolism.": "Choose a continent and engage in a targeted flag guessing adventure. Test your flag recognition skills by focusing on a single continent and become a specialist in identifying its flags. This mode offers an enriching exploration of regional diversity and flag symbolism.",
-            "Next": "Next",
-            "In progress": "In progress",
-            "Hello there 👋! We're excited to have you back. Please use your credentials to access your account and dive into our platform.": "Hello there 👋! We're excited to have you back. Please use your credentials to access your account and dive into our platform.",
-            "Sign up": "Sign up",
-            "Password": "Password",
-            "Create account": "Create account",
-            "Continue with Google": "Continue with Google",
-            "Continue with Github": "Continue with Github",
-            "Avatar": "Avatar",
-            "Username": "Username"
-        }
-    },
     "pl": {
         "translation": {
             "Welcome to Flaggy": "Witaj we Flaggy",
@@ -45,6 +12,7 @@
             "Home": "Strona główna",
             "Dashboard": "Panel",
             "Sign in": "Zaloguj się",
+            "Choose your game mode": "Wybierz tryb gry",
             "All flags": "Wszystkie flagi",
             "In this captivating game mode, embark on a journey to recognize all the flags. Your goal is to identify flags from around the world, spanning diverse cultures and histories. Challenge yourself to master every emblem and become an expert in flag recognition from across the globe.": "W tym fascynującym trybie gry wyrusz w podróż, aby rozpoznać wszystkie flagi. Twoim celem jest zidentyfikowanie flag z całego świata, obejmujących różnorodne kultury i historie. Postaw sobie wyzwanie, aby opanować każdy emblemat i stać się ekspertem w rozpoznawaniu flag z różnych zakątków globu.",
             "Time challenge": "Wyzwanie z czasem",
@@ -62,7 +30,14 @@
             "Continue with Google": "Kontynuuj z Google",
             "Continue with Github": "Kontynuuj z Github",
             "Avatar": "Awatar",
-            "Username": "Nazwa użytkownika"
+            "Username": "Nazwa użytkownika",
+            "Theme toggle": "Zmień tło",
+            "Email confirmation": "Potwierdzenie email",
+            "emailConfirmMsg": "Wysłaliśmy e-maila do <1>{{emailToConfirm}}</1> w celu potwierdzenia ważności Twojego adresu e-mailowego. Po otrzymaniu e-maila, przejdź do podanego linku, aby ukończyć rejestrację.",
+            "If you not get any confirmation email": "Jeśli nie otrzymałeś żadnego e-maila z potwierdzeniem",
+            "Resend confirmation email": "Wyślij ponownie email-a potwierdzającego",
+            "Type your flag here": "Tutaj wpisz swoją flagę",
+            "Hello 👋 and welcome to our community! We're excited to have you on board. Please take a moment to fill out the registration form below to get started. Your presence means a lot to us.": "Cześć 👋! Bardzo się cieszymy, że jesteś z nami. Proszę wypełnij poniższy formularz rejestracyjny, aby dołączyć do naszej społeczności. Twoja obecność jest dla nas ważna."
         }
     }
 }

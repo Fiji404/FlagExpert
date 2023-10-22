@@ -60,13 +60,13 @@ export const SignIn = () => {
                 </Label>
                 {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
                 <Label className="form-label">
-                    {t("Password")}
+                    {t('Password')}
                     <input className="form-input" type="text" {...register('password')} />
                 </Label>
                 {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
                 <div className="mt-6 flex justify-between">
-                    <Link to="/auth/signup">{t("Create account")}</Link>
-                    <Button color="green">{t("Sign in")}</Button>
+                    <Link to="/auth/signup">{t('Create account')}</Link>
+                    <Button color="green">{t('Sign in')}</Button>
                 </div>
                 <div aria-hidden="true" className="mt-4 h-[2px] w-full rounded-full bg-[#eee] dark:bg-[#222222]" />
                 <OAuthProviders />

@@ -14,13 +14,13 @@ export const NavList = ({ session, className }: Props) => {
     return (
         <ul className={twMerge('ml-auto mr-4 items-center gap-2', className)}>
             <li className="grow">
-                <Link to="/">{t("Home")}</Link>
+                <Link to="/">{t('Home')}</Link>
             </li>
             <li className="grow">
-                <Link to="/dashboard">{t("Dashboard")}</Link>
+                <Link to="/dashboard">{t('Dashboard')}</Link>
             </li>
             <li className="relative grow">
-                {session ? <AccountItem user={session.user} /> : <Link to="/auth/signin">{t("Sign in")}</Link>}
+                {session ? <AccountItem user={session.user} /> : <Link to="/auth/signin">{t('Sign in')}</Link>}
             </li>
         </ul>
     );
