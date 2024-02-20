@@ -1,55 +1,40 @@
-import { supabase } from '@/supabase';
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect } from 'react';
 import { Avatar } from './Avatar';
+import man1 from '@/assets/avatars/man1.svg';
+import man2 from '@/assets/avatars/man2.svg';
+import man3 from '@/assets/avatars/man3.svg';
+import woman1 from '@/assets/avatars/woman1.svg';
+import woman2 from '@/assets/avatars/woman2.svg';
+import woman3 from '@/assets/avatars/woman3.svg';
 
 interface Props {
     activeAvatarURL: string;
     saveActiveAvatarURL(avatarURL: string): void;
 }
 
-export const Avatars = memo(({ activeAvatarURL, saveActiveAvatarURL }: Props) => {
-    const [avatarsURLs, setAvatarsURLs] = useState<string[]>([]);
-    const [storageError, setStorageError] = useState('');
+const avatarsURLs = [man1, man2, man3, woman1, woman2, woman3];
 
+export const Avatars = memo(({ activeAvatarURL, saveActiveAvatarURL }: Props) => {
     const pickAvatarHandler = (avatarURL: string) => {
         saveActiveAvatarURL(avatarURL);
     };
 
     useEffect(() => {
-        const getUserAvatars = async () => {
-            const { data: avatarsDetails, error: storageError } = await supabase.storage.from('avatars').list();
-            if (storageError) return setStorageError(storageError.name);
-            const avatarsNames = avatarsDetails.map(file => file.name);
-            const avatarsURLs = await Promise.all(
-                avatarsNames.map(
-                    async fileName => supabase.storage.from('avatars').getPublicUrl(fileName).data.publicUrl
-                )
-            );
-            setAvatarsURLs(avatarsURLs);
-        };
-        getUserAvatars();
-    }, []);
-
-    useEffect(() => {
         if (activeAvatarURL) return;
         const randomAvatarURL = avatarsURLs[Math.trunc(Math.random() * avatarsURLs.length)];
         saveActiveAvatarURL(randomAvatarURL);
-    }, [activeAvatarURL, avatarsURLs, saveActiveAvatarURL]);
+    }, [activeAvatarURL, saveActiveAvatarURL]);
 
     return (
         <ul className="mx-auto flex flex-wrap justify-center gap-4">
-            {storageError ? (
-                <p>Avatars can't be downloaded</p>
-            ) : (
-                avatarsURLs.map(avatarURL => (
-                    <Avatar
-                        key={avatarURL}
-                        isAvatarActive={avatarURL === activeAvatarURL}
-                        avatarURL={avatarURL}
-                        clickAvatarHandler={() => pickAvatarHandler(avatarURL)}
-                    />
-                ))
-            )}
+            {avatarsURLs.map(avatarURL => (
+                <Avatar
+                    key={avatarURL}
+                    isAvatarActive={avatarURL === activeAvatarURL}
+                    avatarURL={avatarURL}
+                    clickAvatarHandler={() => pickAvatarHandler(avatarURL)}
+                />
+            ))}
         </ul>
     );
 });
