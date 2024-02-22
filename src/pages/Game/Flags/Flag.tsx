@@ -1,10 +1,10 @@
 import { memo, useEffect, useRef, useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
 import { BiError } from 'react-icons/bi';
 import { GuessedFlags } from '../Game';
 import { motion } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 type Props = Omit<GuessedFlags, 'id' | 'flagContinent'>;
 
@@ -12,10 +12,13 @@ export const Flag = memo(({ flagName, flagURL, isFlagGuessed }: Props) => {
     const [isFlagLoading, setIsFlagLoading] = useState(true);
     const [isFlagError, setIsFlagError] = useState(false);
     const flagElementRef = useRef<HTMLLIElement>(null);
+    const [playFlagAnimation, setPlayFlagAnimation] = useState(false);
 
     useEffect(() => {
         if (isFlagGuessed && flagElementRef.current) {
             flagElementRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setPlayFlagAnimation(true);
+            setTimeout(() => setPlayFlagAnimation(false), 4000);
         }
     }, [isFlagGuessed]);
 
@@ -34,20 +37,25 @@ export const Flag = memo(({ flagName, flagURL, isFlagGuessed }: Props) => {
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={!isFlagLoading && { scale: 1, opacity: 1 }}
                 whileInView={
-                    isFlagGuessed
+                    playFlagAnimation
                         ? {
-                              translateY: [-8, 0],
-                              rotateY: [180, 0]
+                              scale: [1.1, 1]
                           }
                         : {}
                 }
                 viewport={{ once: true }}
                 className={twMerge(
-                    `flex w-full max-w-[300px] grow basis-40 flex-col items-center justify-center rounded-md border border-[#dfdfdf] bg-[#f8f8f8] px-3 py-2 dark:border-[#2a2c30] dark:bg-[#161616] ${
+                    `flex w-full grow basis-48 flex-col items-center justify-center rounded-md bg-[#f0f0f0] px-3 py-2 dark:bg-[#1d1d1d] ${
                         isFlagLoading && !isFlagError ? 'hidden' : 'flex'
-                    } ${isFlagGuessed ? 'bg-[#ddf3e4] dark:bg-[#152a27]' : ''}`
+                    } ${
+                        playFlagAnimation
+                            ? 'blink'
+                            : isFlagGuessed && !playFlagAnimation
+                            ? 'bg-[#ddf3e4] dark:bg-[#152a27]'
+                            : ''
+                    }`
                 )}
-                transition={{ duration: 1.1, type: 'spring' }}
+                transition={{ duration: 1.1, type: 'spring', times: [0.9, 0], repeatType: 'loop' }}
             >
                 {isFlagError ? (
                     <BiError className="text-5xl text-[#EDD114]" />

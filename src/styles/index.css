@@ -70,4 +70,14 @@
     .modal-shadow-dark {
         box-shadow: 0 0 0 1px color-mix(in oklab, #f1e6fd30, #3c393f);
     }
+
+    .blink {
+        animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+        to {
+            @apply bg-[#5a8881];
+        }
+    }
 }
