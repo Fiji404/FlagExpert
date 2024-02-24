@@ -74,6 +74,9 @@
     .blink {
         animation: blink 1s infinite;
     }
+    .shadow-custom {
+        box-shadow: 0 0 0 5px;
+    }
 
     @keyframes blink {
         to {
