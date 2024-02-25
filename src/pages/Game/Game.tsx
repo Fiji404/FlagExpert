@@ -4,6 +4,7 @@ import { useSupabaseFlagsStore } from '@/store/supabaseFlagsStore';
 import { SupabaseRow } from '@/types/supabase/api';
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 export interface GuessedFlags extends SupabaseRow {
     isFlagGuessed: boolean;
@@ -14,11 +15,14 @@ export const Game = () => {
     const [guessedFlags, setGuessedFlags] = useState<GuessedFlags[]>([]);
     const [isFlagGuessed, setIsFlagGuessed] = useState(false);
     const [guessedFlagsAmount, setGuessedFlagsAmount] = useState(0);
+    const { i18n } = useTranslation();
 
     const validateCountryFlagName = (searchFlagName: string) => {
         setIsFlagGuessed(false);
         setGuessedFlags(prevGuessedFlags => {
-            const guessedFlagIdx = prevGuessedFlags.findIndex(flag => flag.flagName.toLowerCase() === searchFlagName);
+            const guessedFlagIdx = prevGuessedFlags.findIndex(
+                flag => flag[i18n.language === 'pl' ? 'flagNameAlt' : 'flagName'].toLowerCase() === searchFlagName
+            );
             if (guessedFlagIdx === -1 || prevGuessedFlags[guessedFlagIdx].isFlagGuessed) return prevGuessedFlags;
             const guessedFlagsCopy = [...prevGuessedFlags];
             guessedFlagsCopy[guessedFlagIdx] = {
@@ -31,7 +35,7 @@ export const Game = () => {
     };
 
     useEffect(() => {
-        queryFlags('id, flagName, flagURL');
+        queryFlags('id, flagName, flagURL, flagNameAlt');
     }, [queryFlags]);
 
     useEffect(() => {

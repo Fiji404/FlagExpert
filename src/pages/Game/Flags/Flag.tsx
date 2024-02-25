@@ -5,14 +5,17 @@ import { GuessedFlags } from '../Game';
 import { motion } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
 import 'react-loading-skeleton/dist/skeleton.css';
+import { useTranslation } from 'react-i18next';
 
 type Props = Omit<GuessedFlags, 'id' | 'flagContinent'>;
 
-export const Flag = memo(({ flagName, flagURL, isFlagGuessed }: Props) => {
+export const Flag = memo(({ flagName, flagURL, isFlagGuessed, flagNameAlt }: Props) => {
     const [isFlagLoading, setIsFlagLoading] = useState(true);
     const [isFlagError, setIsFlagError] = useState(false);
     const flagElementRef = useRef<HTMLLIElement>(null);
     const [playFlagAnimation, setPlayFlagAnimation] = useState(false);
+    const { i18n } = useTranslation();
+    const flagCurrentName = i18n.language === 'pl' ? flagNameAlt : flagName;
 
     useEffect(() => {
         if (isFlagGuessed && flagElementRef.current) {
@@ -65,11 +68,13 @@ export const Flag = memo(({ flagName, flagURL, isFlagGuessed }: Props) => {
                         onLoad={loadedCountryFlagHandler}
                         className="aspect-video w-full"
                         src={flagURL}
-                        alt={flagName}
+                        alt={flagCurrentName}
                     />
                 )}
                 {isFlagGuessed && (
-                    <p className="mt-2 text-center font-semibold text-[#214134] dark:text-[#3CDA8E]">{flagName}</p>
+                    <p className="mt-2 text-center font-semibold text-[#214134] dark:text-[#3CDA8E]">
+                        {flagCurrentName}
+                    </p>
                 )}
             </motion.li>
         </>

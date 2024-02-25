@@ -14,6 +14,7 @@ export const Flags = ({ guessedFlags }: Props) => {
                     flagName={flag.flagName}
                     flagURL={flag.flagURL}
                     isFlagGuessed={flag.isFlagGuessed}
+                    flagNameAlt={flag.flagNameAlt}
                 />
             ))}
         </ul>
