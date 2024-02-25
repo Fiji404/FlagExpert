@@ -54,7 +54,7 @@ export const Flag = memo(({ flagName, flagURL, isFlagGuessed, flagNameAlt }: Pro
                         playFlagAnimation
                             ? 'blink'
                             : isFlagGuessed && !playFlagAnimation
-                            ? 'bg-[#ddf3e4] dark:bg-[#152a27]'
+                            ? 'bg-[#c9fdd9] dark:bg-[#1f5a50] shadow-md'
                             : ''
                     }`
                 )}
