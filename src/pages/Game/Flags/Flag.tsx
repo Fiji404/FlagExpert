@@ -13,15 +13,15 @@ export const Flag = memo(({ flagName, flagURL, isFlagGuessed, flagNameAlt }: Pro
     const [isFlagLoading, setIsFlagLoading] = useState(true);
     const [isFlagError, setIsFlagError] = useState(false);
     const flagElementRef = useRef<HTMLLIElement>(null);
-    const [playFlagAnimation, setPlayFlagAnimation] = useState(false);
+    // const [playFlagAnimation, setPlayFlagAnimation] = useState(false);
     const { i18n } = useTranslation();
     const flagCurrentName = i18n.language === 'pl' ? flagNameAlt : flagName;
 
     useEffect(() => {
         if (isFlagGuessed && flagElementRef.current) {
             flagElementRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            setPlayFlagAnimation(true);
-            setTimeout(() => setPlayFlagAnimation(false), 4000);
+            // setPlayFlagAnimation(true);
+            // setTimeout(() => setPlayFlagAnimation(false), 4000);
         }
     }, [isFlagGuessed]);
 
@@ -39,26 +39,16 @@ export const Flag = memo(({ flagName, flagURL, isFlagGuessed, flagNameAlt }: Pro
                 ref={flagElementRef}
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={!isFlagLoading && { scale: 1, opacity: 1 }}
-                whileInView={
-                    playFlagAnimation
-                        ? {
-                              scale: [1.1, 1]
-                          }
-                        : {}
-                }
+                whileInView={isFlagGuessed ? {
+                    scale: [1.1, 1]
+                } : {}}
                 viewport={{ once: true }}
                 className={twMerge(
-                    `flex w-full grow basis-48 flex-col items-center justify-center rounded-md bg-[#f0f0f0] px-3 py-2 dark:bg-[#1d1d1d] ${
-                        isFlagLoading && !isFlagError ? 'hidden' : 'flex'
-                    } ${
-                        playFlagAnimation
-                            ? 'blink'
-                            : isFlagGuessed && !playFlagAnimation
-                            ? 'bg-[#c9fdd9] dark:bg-[#1f5a50] shadow-md'
-                            : ''
+                    `flag ${isFlagLoading && !isFlagError ? 'hidden' : 'flex'} ${
+                        isFlagGuessed ? 'bg-[#c9fdd9] shadow-md dark:bg-[#1f5a50]' : ''
                     }`
                 )}
-                transition={{ duration: 1.1, type: 'spring', times: [0.9, 0], repeatType: 'loop' }}
+                transition={{ duration: 1.1, delay: 1, type: 'spring', times: [0.9, 0], repeatType: 'loop' }}
             >
                 {isFlagError ? (
                     <BiError className="text-5xl text-[#EDD114]" />

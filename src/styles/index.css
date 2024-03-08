@@ -78,9 +78,13 @@
         box-shadow: 0 0 0 5px;
     }
 
+    .flag {
+        @apply flex w-full grow basis-48 flex-col items-center justify-center rounded-md bg-[#f0f0f0] px-3 py-2 dark:bg-[#1d1d1d];
+    }
+
     @keyframes blink {
         to {
-            @apply bg-[#5a8881];
+            @apply brightness-125;
         }
     }
 }
