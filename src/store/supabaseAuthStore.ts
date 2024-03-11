@@ -53,7 +53,7 @@ export const useSupabaseAuthStore = create<AuthStore>(set => ({
             password,
             options: {
                 data: {
-                    username,
+                    name: username,
                     avatar_url: avatarURL
                 }
             }
